@@ -1,0 +1,8 @@
+vscode:
+  extensions:
+    - astro-build.astro-vscode
+    - sourcegraph.cody-ai
+
+tasks:
+  - init: |
+      echo 'KEYSTATIC=true' > .env
