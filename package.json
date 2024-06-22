@@ -1,28 +1,36 @@
 {
-  "name": "sngr.xyz",
-  "version": "0.0.1",
-  "type": "module",
+  "name": "@keystatic/templates-astro",
+  "version": "0.0.34",
+  "license": "MIT",
   "scripts": {
     "astro": "astro",
-    "build": "astro check && astro build",
+    "build": "conc npm:check:* && astro build",
+    "check:astro": "astro check",
+    "check:format": "prettier --check .",
+    "check:ts": "tsc --noEmit",
     "dev": "astro dev",
     "format": "prettier --write .",
-    "preview": "wrangler pages dev ./dist",
-    "start": "astro dev"
+    "preview": "astro preview",
+    "start": "conc npm:dev"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^10.4.0",
-    "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.10.1",
-    "tailwindcss": "^3.4.4"
+    "@astrojs/cloudflare": "^10.4.2",
+    "@astrojs/markdoc": "^0.11.0",
+    "@astrojs/react": "^3.6.0",
+    "@keystatic/astro": "^5.0.0",
+    "@keystatic/core": "^0.5.22",
+    "astro": "^4.11.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.7.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "prettier": "^3.3.2",
     "prettier-config-standard": "^7.0.0",
     "prettier-plugin-astro": "^0.14.0",
-    "typescript": "^5.4.5",
-    "wrangler": "^3.60.1"
-  },
-  "packageManager": "pnpm@9.3.0+sha512.ee7b93e0c2bd11409c6424f92b866f31d3ea1bef5fbe47d3c7500cdc3c9668833d2e55681ad66df5b640c61fa9dc25d546efa54d76d7f8bf54b13614ac293631"
+    "typescript": "^5.5.2",
+    "vite": "^5.3.1"
+  }
 }
