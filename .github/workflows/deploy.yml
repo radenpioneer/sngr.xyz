@@ -11,14 +11,10 @@ jobs:
     name: Deploy
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
+      - uses: oven-sh/setup-bun@v2
       - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
-          cache-dependency-path: 'pnpm-lock.yaml'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm run build
+      - run: bun install --frozen-lockfile
+      - run: bun run build
       - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

@@ -34,6 +34,10 @@ export default config({
         description: fields.text({
           label: 'Description',
           multiline: true
+        }),
+        bio: fields.text({
+          label: 'Bio',
+          multiline: true
         })
       }
     })
