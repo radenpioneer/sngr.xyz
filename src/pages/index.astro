@@ -7,8 +7,8 @@ import { getImage } from 'astro:assets'
 const site = await getEntry('site', 'site')
 const logo = await getImage({
   src: site.data.logo,
-  widths: [70, 160],
-  sizes: '(min-width: 768px) 160px, 70px',
+  widths: [70, 100],
+  sizes: '(min-width: 768px) 100px, 70px',
   loading: 'eager',
   alt: site.data.title
 })
