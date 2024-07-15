@@ -26,7 +26,8 @@
         "sourcegraph.cody-ai",
         "bradlc.vscode-tailwindcss",
         "mhutchie.git-graph",
-        "github.vscode-github-actions"
+        "github.vscode-github-actions",
+        "astro-build.houston"
       ]
     }
   }

@@ -13,8 +13,8 @@ export default defineConfig({
   integrations: [
     react(),
     markdoc(),
-    ...(KEYSTATIC ? [keystatic()] : []),
-    tailwind()
+    tailwind(),
+    ...(KEYSTATIC ? [keystatic()] : [])
   ],
   output: 'hybrid',
   adapter: cloudflare()

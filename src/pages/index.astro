@@ -1,17 +1,31 @@
 ---
-import Layout from '../layouts/layout.astro'
+import Layout from '~/layouts/layout.astro'
+import HeroSection from '~/components/home/hero.astro'
+import { getEntry } from 'astro:content'
+import { getImage } from 'astro:assets'
+
+const site = await getEntry('site', 'site')
+const logo = await getImage({
+  src: site.data.logo,
+  widths: [70, 160],
+  sizes: '(min-width: 768px) 160px, 70px',
+  loading: 'eager',
+  alt: site.data.title
+})
 ---
 
-<Layout title='Coming Soon'>
-  <main>
-    <section
-      class='min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-green-50 to-blue-200 px-4'
-    >
-      <h1
-        class='font-heading font-extrabold text-6xl bg-gradient-to-br from-green-500 to-purple-500 bg-clip-text text-transparent box-shadow-md'
-      >
-        <span>Hello World</span>
-      </h1>
-    </section>
+<Layout>
+  <main class='mx-auto flex min-h-screen max-w-screen-xl flex-col px-4'>
+    <HeroSection site={site} logo={logo} />
   </main>
+
+  <Fragment slot='header'>
+    <link
+      rel='preload'
+      href={logo.src}
+      imagesrcset={logo.srcSet.attribute}
+      imagesizes={logo.attributes.sizes}
+      as='image'
+    />
+  </Fragment>
 </Layout>

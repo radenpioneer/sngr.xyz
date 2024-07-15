@@ -28,16 +28,25 @@ export default config({
     site: singleton({
       label: 'Site',
       path: 'src/content/site/site',
-      format: { data: 'json' },
+      format: { contentField: 'bio' },
       schema: {
         title: fields.text({ label: 'Title' }),
         description: fields.text({
           label: 'Description',
           multiline: true
         }),
-        bio: fields.text({
-          label: 'Bio',
-          multiline: true
+        logo: fields.image({
+          label: 'Profile Picture',
+          directory: 'src/assets/images/site',
+          publicPath: '../../assets/images/site/'
+        }),
+        icon: fields.image({
+          label: 'Icon',
+          directory: 'public',
+          publicPath: '/'
+        }),
+        bio: fields.markdoc({
+          label: 'Bio'
         })
       }
     })
