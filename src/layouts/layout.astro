@@ -1,0 +1,18 @@
+---
+import BaseLayout, { type Props as BaseLayoutProps } from './base.astro'
+import './main.css'
+
+interface Props extends Omit<BaseLayoutProps, 'title'> {}
+
+const { ...props } = Astro.props
+---
+
+<BaseLayout {...props}>
+  {/* <head /> */}
+  <Fragment slot='head'>
+    <slot name='head' />
+  </Fragment>
+
+  {/* <body /> */}
+  <slot />
+</BaseLayout>
