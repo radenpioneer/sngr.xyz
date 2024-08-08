@@ -1,3 +1,5 @@
+image: gitpod/workspace-bun
+
 vscode:
   extensions:
     - astro-build.astro-vscode
@@ -8,4 +10,4 @@ vscode:
 
 tasks:
   - init: |
-      echo 'KEYSTATIC=true' > .env
+      bun i --frozen-lockfile

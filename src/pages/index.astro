@@ -1,31 +1,16 @@
 ---
-import Layout from '~/layouts/layout.astro'
-import HeroSection from '~/components/home/hero.astro'
-import { getEntry } from 'astro:content'
-import { getImage } from 'astro:assets'
 
-const site = await getEntry('site', 'site')
-const logo = await getImage({
-  src: site.data.logo,
-  widths: [70, 100],
-  sizes: '(min-width: 768px) 100px, 70px',
-  loading: 'eager',
-  alt: site.data.title
-})
 ---
 
-<Layout>
-  <main class='mx-auto flex min-h-screen max-w-screen-xl flex-col px-4'>
-    <HeroSection site={site} logo={logo} />
-  </main>
-
-  <Fragment slot='header'>
-    <link
-      rel='preload'
-      href={logo.src}
-      imagesrcset={logo.srcSet.attribute}
-      imagesizes={logo.attributes.sizes}
-      as='image'
-    />
-  </Fragment>
-</Layout>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro</h1>
+	</body>
+</html>
