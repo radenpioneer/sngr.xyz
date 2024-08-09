@@ -14,8 +14,16 @@
     "start": "conc bun:dev"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^11.0.4",
+    "@astrojs/react": "^3.6.1",
+    "@keystatic/astro": "^5.0.0",
+    "@keystatic/core": "^0.5.32",
     "@tailwindcss/vite": "^4.0.0-alpha.18",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "astro": "^4.13.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "tailwindcss": "^4.0.0-alpha.18"
   },
   "devDependencies": {

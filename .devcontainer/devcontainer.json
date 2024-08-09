@@ -16,7 +16,7 @@
   // "forwardPorts": [],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "bun install --frozen-lockfile && echo 'KEYSTATIC=true' > .env",
+  "postCreateCommand": "bun install --frozen-lockfile && cp .env.example .env",
 
   // Configure tool-specific properties.
   "customizations": {

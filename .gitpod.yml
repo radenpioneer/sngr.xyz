@@ -7,7 +7,9 @@ vscode:
     - bradlc.vscode-tailwindcss
     - mhutchie.git-graph
     - github.vscode-github-actions
+    - astro-build.houston
 
 tasks:
   - init: |
       bun i --frozen-lockfile
+      cp .env.example .env

@@ -1,0 +1,7 @@
+{
+  "$schema": "../../../.astro/collections/site.schema.json",
+  "name": "R. Ilham Sastronegoro",
+  "description": "Ilham's portfolio site.",
+  "logo": "~/assets/site/logo.jpeg",
+  "icon": "/icon.jpeg"
+}
