@@ -36,7 +36,7 @@ const Home: FC<HomeProps> = ({ site, liners }) => {
 
   return (
     <section
-      className='max-w-screen-lg *:font-heading mx-auto flex flex-1 flex-col items-start justify-center *:hyphens-auto *:break-words *:font-[700]'
+      className='max-w-screen-md *:font-heading mx-auto flex flex-1 flex-col items-start justify-center *:max-w-full *:hyphens-auto *:break-words *:font-[700]'
       ref={ref}
     >
       <h1 className='from-primary to-secondary bg-gradient-to-r bg-clip-text text-5xl uppercase text-transparent md:text-7xl xl:text-8xl'>
