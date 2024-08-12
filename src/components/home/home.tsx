@@ -36,13 +36,13 @@ const Home: FC<HomeProps> = ({ site, liners }) => {
 
   return (
     <section
-      className='*:font-heading flex flex-1 flex-col items-start justify-center *:font-[700] *:break-all'
+      className='max-w-screen-lg *:font-heading mx-auto flex flex-1 flex-col items-start justify-center *:hyphens-auto *:break-words *:font-[700]'
       ref={ref}
     >
-      <h1 className='from-primary to-secondary bg-gradient-to-r bg-clip-text text-6xl uppercase text-transparent md:text-8xl xl:text-9xl'>
+      <h1 className='from-primary to-secondary bg-gradient-to-r bg-clip-text text-5xl uppercase text-transparent md:text-7xl xl:text-8xl'>
         {site.data.name}
       </h1>
-      <p className='text-muted text-5xl md:text-6xl xl:text-8xl'>
+      <p className='text-muted/[0.8] text-4xl md:text-5xl xl:text-7xl'>
         <span id='liner'></span>
         <span id='cursor' className='!font-mono !font-[400]'>
           _
