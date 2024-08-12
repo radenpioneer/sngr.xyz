@@ -35,5 +35,13 @@ export const collections = {
           })
         )
       })
+  }),
+
+  liner: defineCollection({
+    type: 'data',
+    schema: () =>
+      z.object({
+        liners: z.array(z.string())
+      })
   })
 }

@@ -3,6 +3,7 @@ import { getEntry } from 'astro:content'
 import HomeComponent from './home'
 
 const site = await getEntry('site', 'site')
+const liners = await getEntry('liner', 'liner')
 ---
 
-<HomeComponent site={site} client:idle />
+<HomeComponent site={site} liners={liners} client:idle />

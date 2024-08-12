@@ -156,6 +156,26 @@ export default config({
         ),
         $schema: fields.ignored()
       }
+    }),
+
+    liner: singleton({
+      label: 'Liner',
+      format: 'json',
+      path: './src/content/liner/liner',
+      schema: {
+        liners: fields.array(
+          fields.text({
+            label: 'Line',
+            validation: { isRequired: true }
+          }),
+          {
+            label: 'Liners',
+            description: 'Liner texts to display in homepage.',
+            itemLabel: (props) => props.value
+          }
+        ),
+        $schema: fields.ignored()
+      }
     })
   }
 })
