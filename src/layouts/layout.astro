@@ -10,7 +10,10 @@ interface Props extends Omit<BaseLayoutProps, 'title'> {}
 const { class: className, ...props } = Astro.props
 ---
 
-<BaseLayout class:list={['font-display text-text bg-bg', className]} {...props}>
+<BaseLayout
+  class:list={['font-display text-text bg-bg/[.75]', className]}
+  {...props}
+>
   {/* <head /> */}
   <Fragment slot='head'>
     <slot name='head' />

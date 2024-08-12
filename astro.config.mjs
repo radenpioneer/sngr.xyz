@@ -13,5 +13,8 @@ export default defineConfig({
   adapter: cloudflare(),
   vite: {
     plugins: [icons({ compiler: 'jsx', jsx: 'react' }), tailwindcss()]
+  },
+  experimental: {
+    contentCollectionCache: true
   }
 })

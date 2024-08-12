@@ -1,0 +1,8 @@
+---
+import { getEntry } from 'astro:content'
+import HomeComponent from './home'
+
+const site = await getEntry('site', 'site')
+---
+
+<HomeComponent site={site} client:idle />
