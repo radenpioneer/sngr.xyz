@@ -16,6 +16,8 @@
   "dependencies": {
     "@astrojs/cloudflare": "^11.0.4",
     "@astrojs/react": "^3.6.1",
+    "@fontsource-variable/radio-canada": "^5.0.21",
+    "@fontsource-variable/radio-canada-big": "^5.0.1",
     "@keystatic/astro": "^5.0.0",
     "@keystatic/core": "^0.5.32",
     "@tailwindcss/vite": "^4.0.0-alpha.18",
@@ -28,12 +30,16 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.2",
+    "@iconify/json": "^2.2.236",
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
     "concurrently": "^8.2.2",
     "prettier": "^3.3.3",
     "prettier-config-standard": "^7.0.0",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "typescript": "^5.5.4",
+    "unplugin-icons": "^0.19.2",
     "wrangler": "^3.69.1"
   }
 }

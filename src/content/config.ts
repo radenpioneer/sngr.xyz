@@ -1,6 +1,18 @@
 import { defineCollection, z } from 'astro:content'
 
 export const collections = {
+  project: defineCollection({
+    type: 'content',
+    schema: ({ image }) =>
+      z.object({
+        name: z.string().max(64),
+        description: z.string().max(160).optional(),
+        status: z.enum(['concept', 'online', 'archived', 'rejected']),
+        image: image(),
+        screenshots: z.array(image()).optional()
+      })
+  }),
+
   site: defineCollection({
     type: 'data',
     schema: ({ image }) =>
@@ -12,15 +24,16 @@ export const collections = {
       })
   }),
 
-  project: defineCollection({
-    type: 'content',
-    schema: ({ image }) =>
+  menu: defineCollection({
+    type: 'data',
+    schema: () =>
       z.object({
-        name: z.string().max(64),
-        description: z.string().max(160).optional(),
-        status: z.enum(['concept', 'online', 'archived', 'rejected']),
-        image: image(),
-        screenshots: z.array(image()).optional()
+        items: z.array(
+          z.object({
+            label: z.string().max(64),
+            path: z.string()
+          })
+        )
       })
   })
 }

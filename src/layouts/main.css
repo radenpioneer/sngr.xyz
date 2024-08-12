@@ -1,1 +1,14 @@
 @import 'tailwindcss';
+
+@theme {
+  /* Font Families */
+  --font-family-heading: 'Radio Canada Big Variable', system-ui, sans-serif;
+  --font-family-display: 'Radio Canada Variable', system-ui, sans-serif;
+
+  /* Brand Colors */
+  --color-primary: #15a1bf;
+  --color-secondary: #930496;
+  --color-text: #001e33;
+  --color-bg: #eef6f9;
+  --color-muted: #7c8386;
+}

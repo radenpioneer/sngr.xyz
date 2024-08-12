@@ -1,18 +1,22 @@
 ---
 import BaseLayout, { type Props as BaseLayoutProps } from './base.astro'
+import Header from '~/components/header/header.astro'
+import '@fontsource-variable/radio-canada'
+import '@fontsource-variable/radio-canada-big'
 import './main.css'
 
 interface Props extends Omit<BaseLayoutProps, 'title'> {}
 
-const { ...props } = Astro.props
+const { class: className, ...props } = Astro.props
 ---
 
-<BaseLayout {...props}>
+<BaseLayout class:list={['font-display text-text bg-bg', className]} {...props}>
   {/* <head /> */}
   <Fragment slot='head'>
     <slot name='head' />
   </Fragment>
 
   {/* <body /> */}
+  <Header />
   <slot />
 </BaseLayout>

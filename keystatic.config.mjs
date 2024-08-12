@@ -129,6 +129,33 @@ export default config({
         }),
         $schema: fields.ignored()
       }
+    }),
+
+    menu: singleton({
+      label: 'Menu',
+      format: 'json',
+      path: './src/content/menu/menu',
+      schema: {
+        items: fields.array(
+          fields.object({
+            label: fields.text({
+              label: 'Label',
+              validation: { isRequired: true, length: { max: 64 } }
+            }),
+            path: fields.text({
+              label: 'Path',
+              description: 'Full URL or path to the page.',
+              validation: { isRequired: true }
+            })
+          }),
+          {
+            label: 'Menu Items',
+            description: 'Menu items.',
+            itemLabel: (props) => props.fields.label.value
+          }
+        ),
+        $schema: fields.ignored()
+      }
     })
   }
 })

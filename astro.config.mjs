@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
 import keystatic from '@keystatic/astro'
 import cloudflare from '@astrojs/cloudflare'
+import icons from 'unplugin-icons/vite'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
@@ -11,6 +12,6 @@ export default defineConfig({
   output: 'hybrid',
   adapter: cloudflare(),
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [icons({ compiler: 'jsx', jsx: 'react' }), tailwindcss()]
   }
 })
