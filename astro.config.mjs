@@ -15,6 +15,7 @@ export default defineConfig({
     plugins: [icons({ compiler: 'jsx', jsx: 'react' }), tailwindcss()]
   },
   experimental: {
-    contentCollectionCache: true
+    contentCollectionCache: true,
+    directRenderScript: true
   }
 })

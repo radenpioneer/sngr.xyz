@@ -1,13 +1,15 @@
 ---
 import BaseLayout, { type Props as BaseLayoutProps } from './base.astro'
+import SEO, { type Props as SEOProps } from '~/components/site/seo.astro'
 import Header from '~/components/header/header.astro'
+import Icons from '~/components/site/icons.astro'
 import '@fontsource-variable/radio-canada'
 import '@fontsource-variable/radio-canada-big'
 import './main.css'
 
-interface Props extends Omit<BaseLayoutProps, 'title'> {}
+interface Props extends SEOProps, Omit<BaseLayoutProps, 'title'> {}
 
-const { class: className, ...props } = Astro.props
+const { title, description, class: className, ...props } = Astro.props
 ---
 
 <BaseLayout
@@ -16,6 +18,8 @@ const { class: className, ...props } = Astro.props
 >
   {/* <head /> */}
   <Fragment slot='head'>
+    <SEO title={title} description={description} />
+    <Icons />
     <slot name='head' />
   </Fragment>
 

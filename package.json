@@ -4,12 +4,13 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "conc bun:check && astro build",
+    "build": "conc bun:check && conc bun:gen:icons && astro build",
     "check": "conc bun:check:*",
     "check:astro": "astro check",
     "check:format": "prettier --write .",
     "dev": "astro dev",
     "format": "prettier --write .",
+    "gen:icons": "pwa-assets-generator --preset minimal-2023 public/icon.svg",
     "preview": "astro preview",
     "start": "conc bun:dev"
   },
@@ -35,11 +36,13 @@
     "@iconify/json": "^2.2.236",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
+    "@vite-pwa/assets-generator": "^0.2.4",
     "concurrently": "^8.2.2",
     "prettier": "^3.3.3",
     "prettier-config-standard": "^7.0.0",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.5",
+    "sharp": "^0.33.4",
     "typescript": "^5.5.4",
     "unplugin-icons": "^0.19.2",
     "wrangler": "^3.69.1"

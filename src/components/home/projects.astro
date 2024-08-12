@@ -1,0 +1,24 @@
+---
+import { getImage } from 'astro:assets'
+import ProjectsComponent from './projects'
+import { getCollection } from 'astro:content'
+
+const projectsData = await getCollection('project')
+const projects = await Promise.all(
+  projectsData.map(async (project) => ({
+    ...project,
+    data: {
+      ...project.data,
+      image: await getImage({
+        src: project.data.image,
+        widths: [360],
+        sizes: '360px'
+      })
+    }
+  }))
+)
+
+export type ProjectsType = typeof projects
+---
+
+<ProjectsComponent projects={projects} client:visible />
