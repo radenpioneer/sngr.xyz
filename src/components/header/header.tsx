@@ -12,7 +12,7 @@ const Header: FC<HeaderProps> = ({ site, menu }) => {
     <nav className='max-w-screen-2xl font-heading fixed inset-x-0 top-0 mx-auto flex items-center justify-between py-4 px-4'>
       <ul>
         <li className='from-primary to-secondary bg-gradient-to-r bg-clip-text font-[700] uppercase text-transparent md:text-xl'>
-          <a href='/'>
+          <a href='/#top'>
             <strong>{site.data.name}</strong>
           </a>
         </li>

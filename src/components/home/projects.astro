@@ -2,6 +2,7 @@
 import { getImage } from 'astro:assets'
 import ProjectsComponent from './projects'
 import { getCollection } from 'astro:content'
+import type { HTMLAttributes } from 'react'
 
 const projectsData = await getCollection('project')
 const projects = await Promise.all(
@@ -11,14 +12,17 @@ const projects = await Promise.all(
       ...project.data,
       image: await getImage({
         src: project.data.image,
-        widths: [360],
-        sizes: '360px'
+        widths: [240],
+        sizes: '240px'
       })
     }
   }))
 )
 
 export type ProjectsType = typeof projects
+
+interface Props extends HTMLAttributes<HTMLElement> {}
+const { ...props } = Astro.props
 ---
 
-<ProjectsComponent projects={projects} client:visible />
+<ProjectsComponent projects={projects} {...props} client:visible />
