@@ -8,11 +8,14 @@ import tailwindcss from '@tailwindcss/vite'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.sngr.xyz',
-  integrations: [react(), ...(process.env.KEYSTATIC ? [keystatic()] : [])],
+  integrations: [react(), keystatic()],
   output: 'hybrid',
   adapter: cloudflare(),
   vite: {
-    plugins: [icons({ compiler: 'jsx', jsx: 'react' }), tailwindcss()]
+    plugins: [icons({ compiler: 'jsx', jsx: 'react' }), tailwindcss()],
+    define: {
+      'process.env': process.env
+    }
   },
   experimental: {
     contentCollectionCache: true,
