@@ -12,8 +12,8 @@ const projects = await Promise.all(
       ...project.data,
       image: await getImage({
         src: project.data.image,
-        widths: [240],
-        sizes: '240px'
+        widths: [380, 240],
+        sizes: '(min-width: 768px) 240px, 380px'
       })
     }
   }))

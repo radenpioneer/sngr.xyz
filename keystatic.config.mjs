@@ -33,6 +33,18 @@ export default config({
           multiline: true,
           validation: { length: { max: 160 } }
         }),
+        deployedAt: fields.date({
+          label: 'Deployed At',
+          description: 'Date when this project became online.'
+        }),
+        link: fields.url({
+          label: 'Project URL',
+          description: 'The URL of deployed project.'
+        }),
+        repo: fields.url({
+          label: 'Repository URL',
+          description: 'The URL of project repository.'
+        }),
         status: fields.select({
           label: 'Project Status',
           description: "Project's current status on the web.",
@@ -56,6 +68,18 @@ export default config({
           ],
           defaultValue: 'concept'
         }),
+        technologies: fields.array(
+          fields.slug({
+            name: {
+              label: 'Technology'
+            }
+          }),
+          {
+            label: 'Technologies',
+            description: 'Technologies used in this project.',
+            itemLabel: (props) => props.value.name
+          }
+        ),
         image: fields.image({
           label: 'Featured Image',
           description:

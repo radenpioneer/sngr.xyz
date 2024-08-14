@@ -1,6 +1,6 @@
 {
   "name": "R. Ilham Sastronegoro",
-  "description": "Ilham's portfolio site.",
+  "description": "R. Ilham Sastronegoro is a web developer, building things on the web, helping presence of small businesses and organizations to secure their place on The Web.",
   "logo": "~/assets/site/logo.jpeg",
   "icon": "/icon.svg",
   "$schema": "../../../.astro/collections/site.schema.json"
