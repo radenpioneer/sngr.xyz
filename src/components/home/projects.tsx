@@ -26,7 +26,7 @@ const Projects: FC<ProjectsProps> = ({ projects, ...props }) => {
             <a href={`/projects/${project.slug}`}>
               <img
                 {...project.data.image.attributes}
-                className='border-muted aspect-[4/3] w-full rounded-xl border object-cover sm:w-[240px]'
+                className='border-muted/[.2] aspect-[4/3] w-full rounded-xl border object-cover sm:w-[240px]'
                 src={project.data.image.src}
                 srcSet={project.data.image.srcSet.attribute}
                 alt={project.data.name}
@@ -38,10 +38,10 @@ const Projects: FC<ProjectsProps> = ({ projects, ...props }) => {
               </h3>
               <p>{project.data.description}</p>
               {project.data.technologies && (
-                <ul className='flex gap-1 sm:mt-auto'>
+                <ul className='flex flex-wrap gap-x-1 gap-y-2 sm:mt-auto'>
                   {project.data.technologies.map((item, _i) => (
                     <li
-                      className='text-secondary bg-secondary/[.15] border-secondary rounded-full border py-1 px-2 text-sm'
+                      className='text-secondary bg-secondary/[.15] border-secondary rounded-full border py-1 px-3 text-sm'
                       key={_i}
                     >
                       {item.name}

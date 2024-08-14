@@ -9,7 +9,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ site, menu }) => {
   return (
-    <nav className='max-w-screen-2xl font-heading fixed inset-x-0 top-0 mx-auto flex items-center justify-between py-4 px-4'>
+    <nav className='max-w-screen-2xl font-heading bg-bg/[.8] border-muted/[.2] fixed inset-x-0 top-0 z-[99] mx-auto flex items-center justify-between border-b py-2 px-4 backdrop-blur sm:py-4'>
       <ul>
         <li className='from-primary to-secondary bg-gradient-to-r bg-clip-text font-[700] uppercase text-transparent md:text-xl'>
           <a href='/#top'>
