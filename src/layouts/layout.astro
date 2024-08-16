@@ -7,7 +7,7 @@ import '@fontsource-variable/radio-canada'
 import '@fontsource-variable/radio-canada-big'
 import './main.css'
 
-interface Props extends SEOProps, Omit<BaseLayoutProps, 'title'> {}
+export interface Props extends SEOProps, Omit<BaseLayoutProps, 'title'> {}
 
 const { title, description, class: className, ...props } = Astro.props
 ---

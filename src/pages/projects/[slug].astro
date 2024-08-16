@@ -1,7 +1,8 @@
 ---
 import type { GetStaticPaths } from 'astro'
-import Layout from '~/layouts/layout.astro'
+import PageLayout from '~/layouts/page.astro'
 import { getCollection } from 'astro:content'
+import { Image } from 'astro:assets'
 
 export const getStaticPaths = (async () => {
   const projects = await getCollection('project')
@@ -15,9 +16,12 @@ const { project } = Astro.props
 const { Content } = await project.render()
 ---
 
-<Layout title={project.data.name} description={project.data.description}>
-  <main class='pt-[64px] px-4'>
-    <h1>{project.data.name}</h1>
-    <Content />
-  </main>
-</Layout>
+<PageLayout title={project.data.name} description={project.data.description}>
+  <div class='mb-8 grid grid-cols-1 gap-4 md:grid-cols-2'>
+    <div>
+      <Image src={project.data.image} alt={project.data.name} />
+    </div>
+    <div></div>
+  </div>
+  <Content />
+</PageLayout>
