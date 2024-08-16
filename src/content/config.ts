@@ -8,7 +8,7 @@ export const collections = {
         name: z.string().max(64),
         description: z.string().max(160).optional(),
         deployedAt: z.date().optional(),
-        url: z.string().url().optional(),
+        link: z.string().url().optional(),
         repo: z.string().url().optional(),
         status: z.enum(['concept', 'online', 'archived', 'rejected']),
         technologies: z

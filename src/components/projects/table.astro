@@ -13,11 +13,6 @@ const projectsData = await Promise.all(
   data.map(async (entry) => ({
     ...entry.data,
     image: await getImage({ src: entry.data.image }),
-    screenshots: entry.data.screenshots
-      ? await Promise.all(
-          entry.data.screenshots.map(async (src) => await getImage({ src }))
-        )
-      : undefined,
     slug: entry.slug,
     body: entry.body
   }))
