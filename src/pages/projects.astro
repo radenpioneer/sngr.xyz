@@ -1,0 +1,24 @@
+---
+import Layout from '~/layouts/layout.astro'
+import ProjectsTable from '~/components/projects/table.astro'
+import { getCollection } from 'astro:content'
+
+const projects = await getCollection('project')
+
+const page = {
+  title: 'Projects',
+  description: 'Collection of projects and portfolios.'
+} as const
+---
+
+<Layout title={page.title} description={page.description}>
+  <main class='py-[64px] px-4 md:pt-[96px]'>
+    <h1
+      class='font-heading from-primary to-secondary mb-4 bg-gradient-to-r bg-clip-text text-2xl font-[700] uppercase text-transparent sm:text-3xl md:mb-8 md:text-4xl'
+    >
+      {page.title}
+    </h1>
+
+    <ProjectsTable data={projects} />
+  </main>
+</Layout>

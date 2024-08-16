@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getImage } from 'astro:assets'
+import ProjectsTable from './table'
+
+interface Props {
+  data: Array<CollectionEntry<'project'>>
+}
+
+const { data } = Astro.props
+
+const projectsData = await Promise.all(
+  data.map(async (entry) => ({
+    ...entry.data,
+    image: await getImage({ src: entry.data.image }),
+    screenshots: entry.data.screenshots
+      ? await Promise.all(
+          entry.data.screenshots.map(async (src) => await getImage({ src }))
+        )
+      : undefined,
+    slug: entry.slug,
+    body: entry.body
+  }))
+)
+
+export type ProjectsDataType = typeof projectsData
+---
+
+<ProjectsTable data={projectsData} client:idle />
