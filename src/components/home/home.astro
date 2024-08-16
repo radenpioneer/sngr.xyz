@@ -1,9 +1,19 @@
 ---
 import { getEntry } from 'astro:content'
 import HomeComponent from './home'
+import bgImage from '~/assets/common/spiral.svg'
+import { Image } from 'astro:assets'
 
 const site = await getEntry('site', 'site')
 const liners = await getEntry('liner', 'liner')
 ---
 
 <HomeComponent site={site} liners={liners} client:idle />
+<div class='absolute inset-0 z-[-1]'>
+  <Image
+    class='h-screen w-full object-cover'
+    src={bgImage}
+    alt=''
+    loading='eager'
+  />
+</div>

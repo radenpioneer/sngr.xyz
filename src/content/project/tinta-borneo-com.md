@@ -9,10 +9,8 @@ status: online
 technologies:
   - name: Astro
     slug: astro
-  - name: HTMX
-    slug: htmx
-  - name: AlpineJS
-    slug: alpine-js
+  - name: TailwindCSS
+    slug: tailwind-css
   - name: WordPress Headless
     slug: word-press-headless
 image: ~/assets/project/tinta-borneo-com/image.png

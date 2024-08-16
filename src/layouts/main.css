@@ -6,9 +6,9 @@
   --font-family-display: 'Radio Canada Variable', system-ui, sans-serif;
 
   /* Brand Colors */
-  --color-primary: oklch(68.6% 0.102 219.01);
-  --color-secondary: oklch(65.5% 0.133 329.34);
-  --color-text: oklch(22.6% 0.054 242.87);
-  --color-bg: oklch(96.8% 0.009 222.06);
-  --color-muted: oklch(60.5% 0.009 225.17);
+  --color-primary: hsl(200, 100%, 45%);
+  --color-secondary: hsl(175.22, 100%, 39.41%);
+  --color-text: hsl(221.43, 100%, 16.47%);
+  --color-bg: hsl(220, 75%, 98.43%);
+  --color-muted: hsl(215, 4.84%, 51.37%);
 }

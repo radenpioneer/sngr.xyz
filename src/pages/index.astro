@@ -2,6 +2,10 @@
 import Layout from '~/layouts/layout.astro'
 import Home from '~/components/home/home.astro'
 import Projects from '~/components/home/projects.astro'
+import bgImage from '~/assets/common/spiral.svg'
+import { getImage } from 'astro:assets'
+
+const bgImageUrl = await getImage({ src: bgImage })
 ---
 
 <Layout>
@@ -9,4 +13,8 @@ import Projects from '~/components/home/projects.astro'
     <Home />
     <Projects id='projects' />
   </main>
+
+  <Fragment slot='head'>
+    <link rel='preload' as='image' href={bgImageUrl.src} />
+  </Fragment>
 </Layout>

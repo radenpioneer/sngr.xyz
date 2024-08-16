@@ -13,8 +13,6 @@ technologies:
     slug: react
   - name: TailwindCSS
     slug: tailwind-css
-  - name: Framer Motion
-    slug: framer-motion
 image: ~/assets/project/surau-madani/image.png
 screenshots: []
 ---

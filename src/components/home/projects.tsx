@@ -1,5 +1,6 @@
 import type { FC, HTMLAttributes } from 'react'
 import type { ProjectsType } from './projects.astro'
+import RightArrowIcon from '~icons/material-symbols/arrow-right-alt-rounded'
 
 interface ProjectsProps extends HTMLAttributes<HTMLElement> {
   projects: ProjectsType
@@ -8,16 +9,13 @@ interface ProjectsProps extends HTMLAttributes<HTMLElement> {
 const Projects: FC<ProjectsProps> = ({ projects, ...props }) => {
   return (
     <section
-      className='flex min-h-screen flex-col items-start justify-start gap-8 pt-[64px]'
+      className='mx-auto flex min-h-screen [max-width:1280px] flex-col items-start justify-start gap-8 pt-[64px]'
       {...props}
     >
       <h2 className='font-heading from-primary to-secondary bg-gradient-to-r bg-clip-text text-2xl font-[700] uppercase text-transparent sm:text-3xl md:text-4xl'>
         Projects
       </h2>
-      <div
-        className='mx-auto grid w-full grid-cols-1 gap-8'
-        style={{ maxWidth: '768px' }}
-      >
+      <div className='mx-auto grid w-full [max-width:768px] grid-cols-1 gap-8 lg:[max-width:1280px] lg:grid-cols-2'>
         {projects.map((project, _i) => (
           <article
             className='flex flex-col gap-2 sm:flex-row sm:gap-4 md:gap-6'
@@ -52,6 +50,15 @@ const Projects: FC<ProjectsProps> = ({ projects, ...props }) => {
             </div>
           </article>
         ))}
+      </div>
+      <div className='flex w-full flex-row-reverse'>
+        <a
+          className='bg-primary/[.2] border-primary text-primary flex gap-1 rounded-full border py-1 px-4'
+          href='/projects'
+        >
+          <span>More Projects</span>
+          <RightArrowIcon className='text-lg' />
+        </a>
       </div>
     </section>
   )

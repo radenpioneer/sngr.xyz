@@ -36,14 +36,13 @@ const Home: FC<HomeProps> = ({ site, liners }) => {
 
   return (
     <section
-      className='*:font-heading mx-auto flex min-h-screen flex-1 flex-col items-start justify-center pt-[64px] *:max-w-full *:hyphens-auto *:break-words *:font-[700]'
-      style={{ maxWidth: '768px' }}
+      className='*:font-heading mx-auto flex min-h-screen [max-width:1024px] flex-1 flex-col items-start justify-center pt-[64px] *:max-w-full *:hyphens-auto *:break-words *:font-[700]'
       ref={ref}
     >
-      <h1 className='from-primary to-secondary bg-gradient-to-r bg-clip-text text-4xl uppercase text-transparent md:text-5xl xl:text-6xl'>
+      <h1 className='from-primary to-secondary bg-gradient-to-r bg-clip-text text-4xl uppercase text-transparent md:text-6xl xl:text-7xl'>
         {site.data.name}
       </h1>
-      <p className='text-muted/[0.8] text-2xl md:text-3xl xl:text-4xl'>
+      <p className='text-muted/[0.8] max-w-[892px] text-2xl md:text-3xl xl:text-5xl'>
         <span id='liner'></span>
         <span id='cursor' className='!font-mono !font-[400]'>
           _
