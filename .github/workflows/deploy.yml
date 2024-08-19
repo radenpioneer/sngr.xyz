@@ -1,3 +1,5 @@
+name: Build, Test & Deploy
+
 on:
   push:
     branches: [main]
@@ -6,18 +8,83 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
+    name: Build Astro Site
     runs-on: ubuntu-latest
-    name: Deploy
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
+      - name: Checkout your repository using git
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
         with:
           bun-version-file: .bun-version
-      - run: bun install --frozen-lockfile
-      - run: bun run build
-      - uses: cloudflare/wrangler-action@v3
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build your site
+        run: bun run build
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4
+        with:
+          name: build-files
+          path: 'dist'
+
+  test:
+    name: Lighthouse CI Test
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Get .lighthouserc.json
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        with:
+          sparse-checkout: |
+            .lighthouserc.json
+          sparse-checkout-cone-mode: false
+
+      - name: Get Site Artifact
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
+        with:
+          name: build-files
+          path: dist
+
+      - name: Test with Lighthouse CI
+        uses: treosh/lighthouse-ci-action@2f8dda6cf4de7d73b29853c3f29e73a01e297bd8 # v12
+        with:
+          configPath: './.lighthouserc.json'
+          temporaryPublicStorage: true
+
+  deploy:
+    name: Deploy to Cloudflare Pages
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Get necessary files
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        with:
+          sparse-checkout: |
+            .bun-version
+            package.json
+            bun.lockb
+            wrangler.toml
+          sparse-checkout-cone-mode: false
+
+      - name: Get Site Artifact
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
+        with:
+          name: build-files
+          path: dist
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
+        with:
+          bun-version-file: .bun-version
+
+      - uses: cloudflare/wrangler-action@f84a562284fc78278ff9052435d9526f9c718361 # v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          packageManager: bun
           command: pages deploy dist --project-name=sngr-xyz
