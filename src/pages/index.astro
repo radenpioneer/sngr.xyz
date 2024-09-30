@@ -1,20 +1,16 @@
 ---
-import Layout from '~/layouts/layout.astro'
-import Home from '~/components/home/home.astro'
-import Projects from '~/components/home/projects.astro'
-import bgImage from '~/assets/common/spiral.svg'
-import { getImage } from 'astro:assets'
 
-const bgImageUrl = await getImage({ src: bgImage })
 ---
 
-<Layout>
-  <main class='flex min-h-screen flex-col px-4 pb-[64px]'>
-    <Home />
-    <Projects id='projects' />
-  </main>
-
-  <Fragment slot='head'>
-    <link rel='preload' as='image' href={bgImageUrl.src} />
-  </Fragment>
-</Layout>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <h1>Astro</h1>
+  </body>
+</html>

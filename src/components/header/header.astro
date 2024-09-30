@@ -1,9 +1,0 @@
----
-import { getEntry } from 'astro:content'
-import HeaderComponent from './header'
-
-const site = await getEntry('site', 'site')
-const menu = await getEntry('menu', 'menu')
----
-
-<HeaderComponent site={site} menu={menu} client:idle />

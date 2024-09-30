@@ -1,13 +1,6 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "types": ["unplugin-icons/types/react"],
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"]
-    },
-
-    "jsxImportSource": "react",
-    "jsx": "react-jsx"
+    "types": ["@cloudflare/workers-types/2023-07-01"]
   }
 }
