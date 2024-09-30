@@ -1,0 +1,19 @@
+---
+export interface Props {
+  title?: string | undefined
+  description?: string | undefined
+}
+
+const { title, description } = Astro.props
+const SITE = {
+  title: 'sngr.xyz',
+  description: 'portfolio website'
+} as const
+---
+
+{/* basic metadata */}
+<title>{title ? `${title} | ${SITE.title}` : SITE.title}</title>
+<meta name='description' content={description || SITE.description} />
+
+{/* icons */}
+<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
