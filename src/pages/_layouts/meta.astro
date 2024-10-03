@@ -15,4 +15,4 @@ const site = await getEntry('site', 'site')
 <meta name='description' content={description || site.data.description} />
 
 {/* icons */}
-<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+<link rel='icon' type='image/svg+xml' href={site.data.favicon} />

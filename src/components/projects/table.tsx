@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import type { FC, HTMLAttributes, PropsWithChildren } from 'react'
 import type { Projects } from './table.astro'
 import {
   createColumnHelper,
@@ -7,6 +7,7 @@ import {
   useReactTable,
   type ColumnDef
 } from '@tanstack/react-table'
+import clsx from 'clsx/lite'
 
 type Project = Projects[0]
 interface ProjectsTableProps {
@@ -38,19 +39,19 @@ const ProjectsTable: FC<ProjectsTableProps> = ({ projects }) => {
     columnHelper.accessor('data.builtWith', {
       header: 'Built With',
       cell: (cell) => (
-        <ul className='flex items-center gap-1'>
+        <ul className='flex flex-col items-center gap-1 sm:flex-row'>
           {cell.getValue()?.map((entry, i, arr) => (
             <>
               <li key={i}>
-                <span
-                  className='rounded-full bg-zinc-200 px-2 text-sm font-semibold uppercase text-zinc-700 hover:bg-zinc-300'
+                <Pill
+                  className='cursor-pointer bg-zinc-200 text-zinc-700 hover:bg-zinc-300'
                   role='button'
                 >
                   {entry.name}
-                </span>
+                </Pill>
               </li>
               {i + 1 < arr.length && (
-                <li className='text-xs text-zinc-300' aria-hidden>
+                <li className='text-xs text-zinc-300 max-sm:hidden' aria-hidden>
                   &bull;
                 </li>
               )}
@@ -58,6 +59,26 @@ const ProjectsTable: FC<ProjectsTableProps> = ({ projects }) => {
           ))}
         </ul>
       )
+    }),
+    columnHelper.accessor('data.status', {
+      header: 'Status',
+      cell: (cell) => {
+        const value = cell.renderValue()
+        return (
+          <Pill className='flex w-max items-center gap-1 bg-zinc-200 text-zinc-700'>
+            <div
+              className={clsx(
+                'h-[7px] w-[7px] rounded-full',
+                value === 'live' && 'bg-green-500',
+                value === 'progress' && 'bg-yellow-500',
+                value === 'concept' && 'bg-zinc-700',
+                value === 'rejected' && 'bg-red-500'
+              )}
+            ></div>
+            {value}
+          </Pill>
+        )
+      }
     }),
     columnHelper.accessor('data.links', {
       header: 'Link',
@@ -94,7 +115,7 @@ const ProjectsTableRender: FC<{
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
-              <th className='border border-zinc-300' key={header.id}>
+              <th className='border border-zinc-300 p-2' key={header.id}>
                 {!header.isPlaceholder
                   ? flexRender(
                       header.column.columnDef.header,
@@ -110,7 +131,7 @@ const ProjectsTableRender: FC<{
         {table.getRowModel().rows.map((row) => (
           <tr key={row.id}>
             {row.getVisibleCells().map((cell) => (
-              <td className='border border-zinc-300' key={cell.id}>
+              <td className='border border-zinc-300 px-2 py-1' key={cell.id}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}
@@ -118,6 +139,22 @@ const ProjectsTableRender: FC<{
         ))}
       </tbody>
     </table>
+  )
+}
+
+const Pill: FC<PropsWithChildren<HTMLAttributes<HTMLSpanElement>>> = ({
+  children,
+  ...props
+}) => {
+  return (
+    <div
+      className={clsx(
+        'rounded-full px-2 text-sm font-semibold uppercase',
+        props.className
+      )}
+    >
+      {children}
+    </div>
   )
 }
 
