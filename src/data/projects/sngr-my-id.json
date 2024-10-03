@@ -1,0 +1,21 @@
+{
+  "title": "sngr.my.id",
+  "date": "2024-08-19",
+  "status": "live",
+  "builtWith": [
+    {
+      "name": "Astro",
+      "slug": "astro"
+    },
+    {
+      "name": "React",
+      "slug": "react"
+    }
+  ],
+  "links": [
+    {
+      "url": "https://www.sngr.my.id/",
+      "category": "live"
+    }
+  ]
+}

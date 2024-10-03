@@ -1,0 +1,25 @@
+{
+  "title": "TKIT Al-Ishlah",
+  "date": "2024-02-23",
+  "status": "rejected",
+  "builtWith": [
+    {
+      "name": "Astro",
+      "slug": "astro"
+    },
+    {
+      "name": "HTMX",
+      "slug": "htmx"
+    },
+    {
+      "name": "AlpineJS",
+      "slug": "alpine-js"
+    }
+  ],
+  "links": [
+    {
+      "url": "https://tkitalishlah.pages.dev/",
+      "category": "live"
+    }
+  ]
+}

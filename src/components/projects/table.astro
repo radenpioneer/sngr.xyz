@@ -1,0 +1,24 @@
+---
+import ProjectsTable from './table'
+import { getCollection } from 'astro:content'
+import { getImage } from 'astro:assets'
+
+const projectsData = await getCollection('projects')
+const projects = await Promise.all(
+  projectsData
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+    .map(async (project) => ({
+      ...project,
+      data: {
+        ...project.data,
+        image: project.data.image
+          ? await getImage(project.data.image)
+          : undefined
+      }
+    }))
+)
+
+export type Projects = typeof projects
+---
+
+<ProjectsTable projects={projects} client:load />
