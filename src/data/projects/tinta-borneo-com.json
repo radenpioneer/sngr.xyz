@@ -1,0 +1,26 @@
+{
+  "title": "TintaBorneo.com",
+  "date": "2024-05-14",
+  "status": "live",
+  "madeFor": "PT. Multimedia Jagad Perkasa (TintaBorneo.com)",
+  "builtWith": [
+    {
+      "name": "Astro",
+      "slug": "astro"
+    },
+    {
+      "name": "HTMX",
+      "slug": "htmx"
+    },
+    {
+      "name": "AlpineJS",
+      "slug": "alpine-js"
+    }
+  ],
+  "links": [
+    {
+      "url": "https://www.tintaborneo.com/",
+      "category": "live"
+    }
+  ]
+}
