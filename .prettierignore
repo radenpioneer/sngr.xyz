@@ -29,3 +29,6 @@ pnpm-debug.log*
 
 # lockfiles
 package-lock.json
+
+# content collections
+src/data
