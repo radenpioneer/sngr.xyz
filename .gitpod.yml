@@ -1,4 +1,3 @@
-# List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
 tasks:
   - name: Prepare & Start Dev Server
     env:
@@ -13,3 +12,10 @@ ports:
     port: 4321
     onOpen: notify
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
+vscode:
+  extensions:
+    - astro-build.astro-vscode
+    - bradlc.vscode-tailwindcss
+    - github.vscode-github-actions
+    - astro-build.houston
+    - vscode-icons-team.vscode-icons
