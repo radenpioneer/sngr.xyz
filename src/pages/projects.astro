@@ -1,0 +1,10 @@
+---
+import Layout from '~/layouts/layout.astro'
+import ProjectsTable from '~/collections/projects/table.astro'
+---
+
+<Layout title='Projects'>
+  <main>
+    <ProjectsTable server:defer />
+  </main>
+</Layout>

@@ -1,0 +1,14 @@
+---
+import { ProjectsTable } from './table'
+import { getCollection } from 'astro:content'
+
+const data = await getCollection('projects').then((res) =>
+  res.sort(
+    (a, b) =>
+      (b.data.dateCompleted?.getTime() || 0) -
+      (a.data.dateCompleted?.getTime() || 0)
+  )
+)
+---
+
+<ProjectsTable data={data} client:idle />

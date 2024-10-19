@@ -3,6 +3,7 @@ import cloudflare from '@astrojs/cloudflare'
 import react from '@astrojs/react'
 import tailwind from '@astrojs/tailwind'
 import keystatic from '@keystatic/astro'
+import icons from 'unplugin-icons/vite'
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,7 +19,11 @@ export default defineConfig({
       enabled: true
     }
   }),
+  vite: {
+    plugins: [icons({ compiler: 'jsx', jsx: 'react' })]
+  },
   experimental: {
-    contentLayer: true
+    contentLayer: true,
+    serverIslands: true
   }
 })
