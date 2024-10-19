@@ -15,6 +15,7 @@ export default config({
         title: fields.text({
           label: 'Site Name',
           validation: {
+            isRequired: true,
             length: {
               max: 64
             }
@@ -22,10 +23,28 @@ export default config({
         }),
         description: fields.text({
           label: 'Site Description',
+          multiline: true,
           validation: {
+            isRequired: true,
             length: {
               max: 160
             }
+          }
+        }),
+        logo: fields.image({
+          label: 'Site Logo',
+          directory: 'src/assets/site',
+          publicPath: '~/assets/site',
+          validation: {
+            isRequired: true
+          }
+        }),
+        favicon: fields.image({
+          label: 'Site Icon',
+          directory: 'public',
+          publicPath: '',
+          validation: {
+            isRequired: true
           }
         })
       }
