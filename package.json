@@ -1,24 +1,29 @@
 {
   "name": "sngr-xyz",
-  "type": "module",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro build && wrangler pages dev",
     "astro": "astro",
+    "build": "astro check && astro build",
+    "cf-typegen": "wrangler types",
     "deploy": "astro build && wrangler pages deploy",
-    "cf-typegen": "wrangler types"
+    "dev": "astro dev",
+    "format": "prettier --write .",
+    "preview": "astro build && wrangler pages dev",
+    "start": "astro dev"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
     "@astrojs/cloudflare": "^11.1.0",
-    "astro": "^4.16.6",
-    "typescript": "^5.6.3"
+    "astro": "^4.16.6"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.4",
     "@cloudflare/workers-types": "^4.20241018.0",
+    "prettier": "^3.3.3",
+    "prettier-config-standard": "^7.0.0",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "typescript": "^5.6.3",
     "wrangler": "^3.81.0"
   }
 }
