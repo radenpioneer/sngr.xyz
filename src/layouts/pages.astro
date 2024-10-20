@@ -9,7 +9,9 @@ const { title, subtitle, ...props } = Astro.props
 ---
 
 <Layout title={title} {...props}>
-  <header class='mx-auto flex max-w-screen-lg flex-col gap-2 px-4 pb-4 pt-16'>
+  <header
+    class='mx-auto flex max-w-screen-lg flex-col gap-1 px-4 pb-4 pt-16 md:gap-2'
+  >
     <h1 class='text-2xl font-extrabold md:text-4xl'>{title}</h1>
     {subtitle && <p class='font-mono text-zinc-700'>{subtitle}</p>}
   </header>

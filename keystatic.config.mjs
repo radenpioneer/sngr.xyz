@@ -11,7 +11,10 @@ export default config({
       label: 'Projects',
       path: 'src/data/projects/*',
       slugField: 'title',
-      format: 'json',
+      format: {
+        contentField: 'content'
+      },
+      entryLayout: 'content',
       schema: {
         title: fields.slug({
           name: {
@@ -83,7 +86,11 @@ export default config({
             label: 'Links',
             itemLabel: (props) => props.fields.title.value
           }
-        )
+        ),
+        content: fields.mdx({
+          label: 'Project Long Description',
+          extension: 'md'
+        })
       }
     })
   },

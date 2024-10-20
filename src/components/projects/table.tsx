@@ -26,7 +26,14 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
     }),
     columnHelper.accessor('data.title', {
       header: 'Project',
-      cell: (cell) => cell.getValue()
+      cell: (cell) => (
+        <a
+          className='font-bold hover:underline'
+          href={`#/projects/${cell.row.original.id}`}
+        >
+          {cell.getValue()}
+        </a>
+      )
     }),
     columnHelper.accessor('data.madeAt', {
       header: 'Made At',
@@ -38,7 +45,9 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
         <ul className='flex items-center gap-1 text-xs'>
           {cell.getValue()?.map((entry, i, arr) => (
             <Fragment key={i}>
-              <li className='font-mono hover:underline'>{entry.name}</li>
+              <li className='font-mono hover:underline' role='button'>
+                {entry.name}
+              </li>
               {i < arr.length - 1 ? <span>&bull;</span> : null}
             </Fragment>
           ))}
