@@ -1,0 +1,23 @@
+---
+import Layout, { type Props as LayoutProps } from '~/layouts/layout.astro'
+
+export interface Props extends LayoutProps {
+  subtitle?: string | undefined
+}
+
+const { title, subtitle, ...props } = Astro.props
+---
+
+<Layout title={title} {...props}>
+  <header class='mx-auto flex max-w-screen-lg flex-col gap-2 px-4 pb-4 pt-16'>
+    <h1 class='text-2xl font-extrabold md:text-4xl'>{title}</h1>
+    {subtitle && <p class='font-mono text-zinc-700'>{subtitle}</p>}
+  </header>
+  <main class='mx-auto min-h-screen max-w-screen-lg px-4 pb-8'>
+    <slot />
+  </main>
+
+  <Fragment slot='head'>
+    <slot name='head' />
+  </Fragment>
+</Layout>

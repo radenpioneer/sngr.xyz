@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import { type FC, Fragment } from 'react'
 import type { CollectionEntry } from 'astro:content'
 import {
   createColumnHelper,
@@ -20,7 +20,9 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
   const columns = [
     columnHelper.accessor('data.dateCompleted', {
       header: 'Year',
-      cell: (cell) => cell.getValue()?.getFullYear()
+      cell: (cell) => (
+        <span className='font-mono'>{cell.getValue()?.getFullYear()}</span>
+      )
     }),
     columnHelper.accessor('data.title', {
       header: 'Project',
@@ -33,12 +35,12 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
     columnHelper.accessor('data.builtWith', {
       header: 'Built with',
       cell: (cell) => (
-        <ul className='flex items-center gap-1 text-sm'>
+        <ul className='flex items-center gap-1 text-xs'>
           {cell.getValue()?.map((entry, i, arr) => (
-            <>
-              <li>{entry.name}</li>
+            <Fragment key={i}>
+              <li className='font-mono hover:underline'>{entry.name}</li>
               {i < arr.length - 1 ? <span>&bull;</span> : null}
-            </>
+            </Fragment>
           ))}
         </ul>
       )
@@ -48,7 +50,7 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
       cell: (cell) => (
         <ul className='flex items-center gap-1 text-sm'>
           {cell.getValue()?.map((entry, i, arr) => (
-            <>
+            <Fragment key={i}>
               <li>
                 <a
                   className='text-sm'
@@ -64,7 +66,7 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
                 </a>
               </li>
               {i < arr.length - 1 ? <span>&bull;</span> : null}
-            </>
+            </Fragment>
           ))}
         </ul>
       )

@@ -1,10 +1,18 @@
 ---
-import Layout from '~/layouts/layout.astro'
-import ProjectsTable from '~/collections/projects/table.astro'
+import PagesLayout, {
+  type Props as PagesLayoutProps
+} from '~/layouts/pages.astro'
+import ProjectsTable from '~/components/projects/table.astro'
+
+const props = {
+  title: 'Projects',
+  subtitle: 'My past works.',
+  description: 'Archive page contains list of past projects.'
+} satisfies PagesLayoutProps
 ---
 
-<Layout title='Projects'>
-  <main>
-    <ProjectsTable server:defer />
-  </main>
-</Layout>
+<PagesLayout {...props}>
+  <div class='w-full overflow-x-scroll border border-zinc-700'>
+    <ProjectsTable />
+  </div>
+</PagesLayout>

@@ -1,13 +1,15 @@
 ---
 import BaseLayout, { type Props as BaseLayoutProps } from './base.astro'
 import Meta, { type Props as MetaProps } from './meta.astro'
+import '@fontsource-variable/plus-jakarta-sans'
+import '@fontsource-variable/martian-mono'
 
 export interface Props extends BaseLayoutProps, MetaProps {}
 
 const { title, description, ...props } = Astro.props
 ---
 
-<BaseLayout {...props}>
+<BaseLayout class='bg-zinc-50 text-zinc-950' {...props}>
   <slot />
 
   <Fragment slot='head'>

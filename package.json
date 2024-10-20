@@ -16,6 +16,8 @@
     "@astrojs/cloudflare": "^11.1.0",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.2",
+    "@fontsource-variable/martian-mono": "^5.1.0",
+    "@fontsource-variable/plus-jakarta-sans": "^5.1.0",
     "@keystatic/astro": "^5.0.2",
     "@keystatic/core": "^0.5.38",
     "@tanstack/react-table": "^8.20.5",
