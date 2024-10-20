@@ -1,0 +1,31 @@
+---
+import { FeaturedProjects } from './projects'
+import { getCollection } from 'astro:content'
+import { getImage } from 'astro:assets'
+
+const projectsData = await getCollection(
+  'projects',
+  (entry) => entry.data.featured
+)
+const projects = await Promise.all(
+  projectsData.map(async (project) => ({
+    ...project,
+    data: {
+      ...project.data,
+      image: project.data.image
+        ? await getImage({
+            src: project.data.image,
+            widths: [640],
+            sizes: '640px'
+          })
+        : undefined
+    }
+  }))
+)
+
+export type Projects = typeof projects
+---
+
+<section class='mx-auto max-w-screen-md px-4'>
+  <FeaturedProjects projects={projects} client:idle />
+</section>

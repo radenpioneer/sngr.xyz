@@ -5,4 +5,6 @@ import { getCollection } from 'astro:content'
 const data = await getCollection('projects')
 ---
 
-<ProjectsTable data={data} client:idle />
+<section class='w-full overflow-x-auto border border-zinc-700'>
+  <ProjectsTable data={data} client:idle />
+</section>

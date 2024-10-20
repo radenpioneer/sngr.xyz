@@ -13,5 +13,6 @@ links:
   - title: Live Website
     url: https://www.tintaborneo.com
     type: public-url
+image: ~/assets/projects/tinta-borneo-com/image.png
 ---
 A local media based in Central Kalimantan.
