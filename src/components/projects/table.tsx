@@ -35,7 +35,7 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
       cell: (cell) => (
         <a
           className='font-bold hover:underline'
-          href={`#/projects/${cell.row.original.id}`}
+          href={`/#projects/${cell.row.original.id}`}
         >
           {cell.getValue()}
         </a>
@@ -50,7 +50,7 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
     columnHelper.accessor('data.builtWith', {
       header: 'Built with',
       cell: (cell) => (
-        <ul className='flex items-center gap-1 text-xs'>
+        <ul className='flex flex-wrap items-center gap-1 text-sm'>
           {cell.getValue()?.map((entry, i, arr) => (
             <Fragment key={i}>
               <li>
@@ -58,7 +58,9 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
                   {entry.name}
                 </button>
               </li>
-              {i < arr.length - 1 ? <span>&bull;</span> : null}
+              {i < arr.length - 1 ? (
+                <span className='text-xs'>&bull;</span>
+              ) : null}
             </Fragment>
           ))}
         </ul>
@@ -68,12 +70,12 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
     columnHelper.accessor('data.links', {
       header: 'Link',
       cell: (cell) => (
-        <ul className='flex w-full items-center justify-center gap-1 text-sm'>
+        <ul className='flex w-full items-center justify-center gap-1'>
           {cell.getValue()?.map((entry, i, arr) => (
             <Fragment key={i}>
               <li>
                 <a
-                  className='text-2xl md:text-xs'
+                  className='text-2xl md:text-sm'
                   href={entry.url}
                   title={entry.title}
                   aria-label={entry.title}
@@ -86,7 +88,9 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
                   )}
                 </a>
               </li>
-              {i < arr.length - 1 ? <span>&bull;</span> : null}
+              {i < arr.length - 1 ? (
+                <span className='text-xs'>&bull;</span>
+              ) : null}
             </Fragment>
           ))}
         </ul>
@@ -104,6 +108,7 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     onSortingChange: setSorting,
+    enableSortingRemoval: false,
     state: {
       sorting
     }
@@ -141,7 +146,7 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
       </thead>
       <tbody>
         {table.getRowModel().rows.map((row) => (
-          <tr className='hover:bg-zinc-200' key={row.id}>
+          <tr className='align-top hover:bg-zinc-200' key={row.id}>
             {row.getVisibleCells().map((cell) => (
               <td className='border border-zinc-700 px-3 py-1' key={cell.id}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
