@@ -1,6 +1,7 @@
 ---
 import Layout, { type Props as LayoutProps } from '~/layouts/layout.astro'
 import Main from './main.astro'
+import BackIcon from '~icons/material-symbols/arrow-back-rounded'
 
 export interface Props extends LayoutProps {
   subtitle?: string | undefined
@@ -11,8 +12,21 @@ const { title, subtitle, ...props } = Astro.props
 
 <Layout title={title} {...props}>
   <header
-    class='mx-auto flex max-w-screen-xl flex-col gap-1 px-4 pb-4 pt-16 md:gap-2'
+    class='mx-auto flex max-w-screen-xl flex-col gap-1 px-4 pb-4 pt-16 sm:mb-12 sm:gap-2'
   >
+    {
+      Astro.url.pathname !== '/' && (
+        <div class='flex'>
+          <a
+            class='text-zinc-500 hover:text-zinc-800 sm:text-xl'
+            href='/'
+            aria-label='home'
+          >
+            <BackIcon />
+          </a>
+        </div>
+      )
+    }
     <h1 class='text-2xl font-extrabold md:text-4xl'>{title}</h1>
     {subtitle && <p class='font-mono text-zinc-700'>{subtitle}</p>}
   </header>

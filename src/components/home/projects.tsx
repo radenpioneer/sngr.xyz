@@ -9,10 +9,10 @@ export interface FeaturedProjectsProps {
 
 export const FeaturedProjects: FC<FeaturedProjectsProps> = ({ projects }) => {
   return (
-    <div className='flex min-h-screen flex-col justify-center gap-4 py-16 sm:gap-24'>
+    <div className='flex min-h-screen flex-col justify-center gap-4 py-16 sm:gap-20'>
       {projects.map((project) => (
         <div
-          className='relative flex aspect-[4/3] flex-col border-2 border-zinc-700 bg-zinc-100 p-4 shadow hover:bg-zinc-200 sm:aspect-auto'
+          className='relative flex aspect-[2360/1640] flex-col border-2 border-zinc-700 bg-zinc-100/90 p-4 shadow hover:bg-zinc-200 sm:aspect-auto sm:bg-zinc-100'
           key={project.id}
         >
           <div className='font-mono text-xs'>Featured Project</div>
@@ -37,7 +37,11 @@ export const FeaturedProjects: FC<FeaturedProjectsProps> = ({ projects }) => {
               <div className='mt-2 flex gap-1 text-xl md:text-xs'>
                 {project.data.links.map((entry, i, arr) => (
                   <Fragment key={i}>
-                    <a href={entry.url} target='_blank'>
+                    <a
+                      href={entry.url}
+                      target='_blank'
+                      aria-label={entry.title}
+                    >
                       {entry.type === 'repository' ? (
                         <GithubIcon />
                       ) : (
@@ -52,7 +56,7 @@ export const FeaturedProjects: FC<FeaturedProjectsProps> = ({ projects }) => {
           </div>
           {project.data.image && (
             <img
-              className='hidden w-[320px] border-2 border-zinc-700 bg-zinc-50 shadow sm:absolute sm:right-[16px] sm:top-[50%] sm:block sm:translate-y-[-50%]'
+              className='absolute right-0 top-0 z-[-1] aspect-[2360/1640] w-full bg-zinc-50 grayscale sm:right-[16px] sm:top-[50%] sm:z-[1] sm:block sm:w-[320px] sm:translate-y-[-50%] sm:border-2 sm:border-zinc-700 sm:shadow sm:grayscale-0'
               src={project.data.image.src}
               srcSet={project.data.image.srcSet.attribute}
               {...project.data.image.attributes}
