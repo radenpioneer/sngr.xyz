@@ -45,8 +45,10 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
         <ul className='flex items-center gap-1 text-xs'>
           {cell.getValue()?.map((entry, i, arr) => (
             <Fragment key={i}>
-              <li className='font-mono hover:underline' role='button'>
-                {entry.name}
+              <li>
+                <button className='font-mono hover:underline'>
+                  {entry.name}
+                </button>
               </li>
               {i < arr.length - 1 ? <span>&bull;</span> : null}
             </Fragment>
@@ -65,6 +67,7 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
                   className='text-sm'
                   href={entry.url}
                   title={entry.title}
+                  aria-label={entry.title}
                   target='_blank'
                 >
                   {entry.type === 'repository' ? (

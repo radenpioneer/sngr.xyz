@@ -45,6 +45,9 @@ export default config({
         madeAt: fields.text({
           label: 'Made at'
         }),
+        featured: fields.checkbox({
+          label: 'Featured Project'
+        }),
         builtWith: fields.array(
           fields.slug({
             name: {
@@ -87,9 +90,20 @@ export default config({
             itemLabel: (props) => props.fields.title.value
           }
         ),
+        image: fields.image({
+          label: 'Project Image',
+          directory: 'src/assets/projects',
+          publicPath: '~/assets/projects'
+        }),
         content: fields.mdx({
           label: 'Project Long Description',
-          extension: 'md'
+          extension: 'md',
+          options: {
+            image: {
+              directory: 'src/assets/projects',
+              publicPath: '~/assets/projects'
+            }
+          }
         })
       }
     })
