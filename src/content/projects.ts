@@ -1,6 +1,5 @@
 import { defineCollection, z } from 'astro:content'
 import { glob } from 'astro/loaders'
-import { image } from 'node_modules/@keystatic/core/dist/declarations/src/form/fields'
 
 export const projects = defineCollection({
   type: 'content_layer',
