@@ -24,7 +24,7 @@ export const FeaturedProjects: FC<FeaturedProjectsProps> = ({ projects }) => {
           </p>
           <div className='mt-auto sm:mt-4'>
             {project.data.builtWith && (
-              <div className='flex gap-2 font-mono text-xs'>
+              <div className='flex flex-wrap gap-2 font-mono text-xs'>
                 {project.data.builtWith.map((entry, i, arr) => (
                   <Fragment key={i}>
                     <span>{entry.name}</span>

@@ -9,6 +9,10 @@ builtWith:
     slug: astro
   - name: WordPress
     slug: word-press
+  - name: HTMX
+    slug: htmx
+  - name: AlpineJS
+    slug: alpine-js
 links:
   - title: Live Website
     url: https://www.tintaborneo.com
