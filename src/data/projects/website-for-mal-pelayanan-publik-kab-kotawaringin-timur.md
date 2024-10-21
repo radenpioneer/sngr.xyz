@@ -9,7 +9,7 @@ builtWith:
   - name: Astro
     slug: astro
 links:
-  - title: Official Website
+  - title: URL
     url: https://mpp.kotimkab.go.id
     type: public-url
 image: >-

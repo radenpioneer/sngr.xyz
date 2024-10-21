@@ -11,7 +11,7 @@ builtWith:
   - name: React
     slug: react
 links:
-  - title: Live URL
+  - title: URL
     url: https://www.suraumadani.com
     type: public-url
 image: ~/assets/projects/surau-madani/image.png

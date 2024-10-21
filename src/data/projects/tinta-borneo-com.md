@@ -15,7 +15,7 @@ builtWith:
   - name: AlpineJS
     slug: alpine-js
 links:
-  - title: Live Website
+  - title: URL
     url: https://www.tintaborneo.com
     type: public-url
 image: ~/assets/projects/tinta-borneo-com/image.png

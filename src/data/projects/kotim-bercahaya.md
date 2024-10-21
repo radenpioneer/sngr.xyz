@@ -9,7 +9,7 @@ builtWith:
   - name: Eleventy
     slug: eleventy
 links:
-  - title: Archived Website
+  - title: URL
     url: https://kotimbercahaya4.pages.dev
     type: public-url
   - title: Current Repository

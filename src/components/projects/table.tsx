@@ -80,21 +80,26 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
     columnHelper.accessor('data.links', {
       header: 'Link',
       cell: (cell) => (
-        <ul className='flex w-full items-center justify-center gap-1'>
+        <ul className='flex w-full items-center gap-1'>
           {cell.getValue()?.map((entry, i, arr) => (
             <Fragment key={i}>
               <li>
                 <a
-                  className='text-2xl md:text-sm'
+                  className='whitespace-nowrap'
                   href={entry.url}
                   title={entry.title}
                   aria-label={entry.title}
                   target='_blank'
                 >
                   {entry.type === 'repository' ? (
-                    <GithubIcon />
+                    <GithubIcon className='text-xl md:text-sm' />
                   ) : (
-                    <PublicURLIcon />
+                    <Fragment>
+                      <span className='font-mono hover:underline md:text-sm'>
+                        {entry.title}
+                      </span>
+                      <PublicURLIcon className='inline text-xl md:text-sm' />
+                    </Fragment>
                   )}
                 </a>
               </li>

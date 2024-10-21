@@ -10,7 +10,7 @@ builtWith:
   - name: React
     slug: react
 links:
-  - title: Live URL
+  - title: URL
     url: https://www.sngr.my.id/
     type: public-url
   - title: Repository

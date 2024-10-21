@@ -11,7 +11,7 @@ builtWith:
   - name: AlpineJS
     slug: alpine-js
 links:
-  - title: Live Website
+  - title: URL
     url: https://tkitalishlah.pages.dev/
     type: public-url
 image: ~/assets/projects/tkit-al-ishlah/image.png
