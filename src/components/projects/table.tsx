@@ -35,26 +35,30 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
       cell: (cell) => (
         <a
           className='font-bold hover:underline'
-          href={`/#projects/${cell.row.original.id}`}
+          href={
+            cell.row.original.data.page
+              ? `/projects/${cell.row.original.id}`
+              : '/projects'
+          }
         >
           {cell.getValue()}
         </a>
       ),
-      sortingFn: 'textCaseSensitive'
+      sortingFn: 'text'
     }),
     columnHelper.accessor('data.status', {
       header: 'Status',
       cell: (cell) => (
-        <button className='font-mono text-sm uppercase hover:underline'>
+        <button className='w-full whitespace-nowrap text-center font-mono text-sm uppercase hover:underline'>
           {cell.getValue()}
         </button>
       ),
-      sortingFn: 'textCaseSensitive'
+      sortingFn: 'text'
     }),
     columnHelper.accessor('data.madeFor', {
       header: 'Made For',
       cell: (cell) => cell.getValue(),
-      sortingFn: 'textCaseSensitive',
+      sortingFn: 'text',
       sortUndefined: 'last'
     }),
     columnHelper.accessor('data.builtWith', {

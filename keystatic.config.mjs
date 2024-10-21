@@ -59,6 +59,10 @@ export default config({
         featured: fields.checkbox({
           label: 'Featured Project'
         }),
+        page: fields.checkbox({
+          label: 'Project Page',
+          defaultValue: false
+        }),
         builtWith: fields.array(
           fields.slug({
             name: {

@@ -4,6 +4,7 @@ description: My very own personal blog.
 dateCompleted: 2024-08-21
 status: completed
 featured: false
+page: true
 builtWith:
   - name: Astro
     slug: astro

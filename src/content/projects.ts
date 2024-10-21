@@ -18,6 +18,7 @@ export const projects = defineCollection({
       ]),
       madeFor: z.string().optional(),
       featured: z.boolean().optional(),
+      page: z.boolean().optional(),
       builtWith: z
         .array(
           z.object({

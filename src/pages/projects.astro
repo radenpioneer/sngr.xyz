@@ -3,7 +3,7 @@ import PagesLayout, {
   type Props as PagesLayoutProps
 } from '~/layouts/pages.astro'
 import ProjectsTable from '~/components/projects/table.astro'
-import BackIcon from '~icons/material-symbols/arrow-back-rounded'
+import { BackButton } from '~/components/common/button'
 
 const props = {
   title: 'Projects',
@@ -16,12 +16,6 @@ const props = {
   <ProjectsTable />
 
   <Fragment slot='navigation'>
-    <a
-      class='text-zinc-500 hover:text-zinc-800 sm:text-xl'
-      href='/#projects'
-      aria-label='home'
-    >
-      <BackIcon />
-    </a>
+    <BackButton href='/#projects' aria-label='home' />
   </Fragment>
 </PagesLayout>
