@@ -151,6 +151,35 @@ export default config({
           }
         })
       }
+    }),
+
+    author: singleton({
+      label: "Author's Bio",
+      path: 'src/data/bio/bio',
+      format: {
+        contentField: 'content'
+      },
+      entryLayout: 'content',
+      schema: {
+        image: fields.image({
+          label: 'Image',
+          directory: 'src/assets/bio',
+          publicPath: '~/assets/bio',
+          validation: {
+            isRequired: true
+          }
+        }),
+        content: fields.mdx({
+          label: 'Content',
+          extension: 'md',
+          options: {
+            image: {
+              directory: 'src/assets/bio',
+              publicPath: '~/assets/bio'
+            }
+          }
+        })
+      }
     })
   }
 })

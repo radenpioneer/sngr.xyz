@@ -9,7 +9,7 @@ export interface FeaturedProjectsProps {
 
 export const FeaturedProjects: FC<FeaturedProjectsProps> = ({ projects }) => {
   return (
-    <div className='flex min-h-screen flex-col justify-center gap-4 py-16 sm:gap-20'>
+    <div className='flex flex-1 flex-col justify-center gap-4 py-16 sm:gap-20'>
       {projects.map((project) => (
         <div
           className='relative flex aspect-[2360/1640] flex-col border-2 border-zinc-700 bg-zinc-100/90 p-4 shadow hover:bg-zinc-200 sm:aspect-auto sm:bg-zinc-100'
@@ -30,27 +30,37 @@ export const FeaturedProjects: FC<FeaturedProjectsProps> = ({ projects }) => {
                 {project.data.builtWith.map((entry, i, arr) => (
                   <Fragment key={i}>
                     <span>{entry.name}</span>
-                    {i < arr.length - 1 && <span>&bull;</span>}
+                    {i < arr.length - 1 && (
+                      <span className='text-xs'>&bull;</span>
+                    )}
                   </Fragment>
                 ))}
               </div>
             )}
             {project.data.links && (
-              <div className='mt-2 flex gap-1 text-xl md:text-xs'>
+              <div className='mt-2 flex items-center gap-2 sm:gap-1'>
                 {project.data.links.map((entry, i, arr) => (
                   <Fragment key={i}>
                     <a
+                      className='hover:text-zinc-700'
                       href={entry.url}
                       target='_blank'
                       aria-label={entry.title}
                     >
                       {entry.type === 'repository' ? (
-                        <GithubIcon />
+                        <GithubIcon className='text-xl md:text-xs' />
                       ) : (
-                        <PublicURLIcon />
+                        <Fragment>
+                          <span className='mr-1 text-sm font-bold hover:underline md:text-xs'>
+                            {entry.title}
+                          </span>
+                          <PublicURLIcon className='inline text-xl md:text-xs' />
+                        </Fragment>
                       )}
                     </a>
-                    {i < arr.length - 1 && <span>&bull;</span>}
+                    {i < arr.length - 1 && (
+                      <span className='text-xs'>&bull;</span>
+                    )}
                   </Fragment>
                 ))}
               </div>

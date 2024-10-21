@@ -1,11 +1,14 @@
 ---
 import Layout from '~/layouts/layout.astro'
 import Main from '~/layouts/main.astro'
+import Hero from '~/components/home/hero.astro'
 import Projects from '~/components/home/projects.astro'
 ---
 
 <Layout>
-  <Main>
-    <Projects />
+  <Main class='snap-y snap-mandatory'>
+    <Hero id='hero' class='snap-start' />
+    <hr class='border border-zinc-300' />
+    <Projects id='projects' class='snap-start' />
   </Main>
 </Layout>

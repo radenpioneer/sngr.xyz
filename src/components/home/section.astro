@@ -1,7 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 
-interface Props extends HTMLAttributes<'section'> {
+export interface Props extends HTMLAttributes<'section'> {
   title?: string | undefined
 }
 
@@ -21,7 +21,7 @@ const { title, class: className, ...props } = Astro.props
 
   {
     Astro.slots.has('footer') && (
-      <div class='flex justify-center sm:justify-end'>
+      <div class='flex justify-center pb-4 sm:justify-end'>
         <slot name='footer' />
       </div>
     )

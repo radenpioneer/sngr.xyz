@@ -1,9 +1,13 @@
 ---
-import Section from './section.astro'
+import Section, { type Props as SectionProps } from './section.astro'
 import { FeaturedProjects } from './projects'
 import { getCollection } from 'astro:content'
 import { getImage } from 'astro:assets'
 import ArrowIcon from '~icons/material-symbols/arrow-forward-rounded'
+
+interface Props extends Omit<SectionProps, 'title'> {}
+
+const { class: className, ...props } = Astro.props
 
 const projectsData = await getCollection(
   'projects',
@@ -27,10 +31,14 @@ const projects = await Promise.all(
 
 export type Projects = typeof projects
 
-const title = 'Projects I built' as const
+const title = "Projects I've built" as const
 ---
 
-<Section title={title} class='mx-auto max-w-screen-md'>
+<Section
+  title={title}
+  class:list={['mx-auto flex min-h-screen max-w-screen-md flex-col', className]}
+  {...props}
+>
   <FeaturedProjects projects={projects} client:idle />
 
   <Fragment slot='footer'>
