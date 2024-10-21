@@ -42,10 +42,20 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
       ),
       sortingFn: 'textCaseSensitive'
     }),
-    columnHelper.accessor('data.madeAt', {
-      header: 'Made At',
-      cell: (cell) => cell.getValue(),
+    columnHelper.accessor('data.status', {
+      header: 'Status',
+      cell: (cell) => (
+        <button className='font-mono text-sm uppercase hover:underline'>
+          {cell.getValue()}
+        </button>
+      ),
       sortingFn: 'textCaseSensitive'
+    }),
+    columnHelper.accessor('data.madeFor', {
+      header: 'Made For',
+      cell: (cell) => cell.getValue(),
+      sortingFn: 'textCaseSensitive',
+      sortUndefined: 'last'
     }),
     columnHelper.accessor('data.builtWith', {
       header: 'Built with',

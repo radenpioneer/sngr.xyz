@@ -9,7 +9,14 @@ export const projects = defineCollection({
       title: z.string().max(160),
       description: z.string().max(160).optional(),
       dateCompleted: z.coerce.date().optional(),
-      madeAt: z.string().optional(),
+      status: z.enum([
+        'completed',
+        'archived',
+        'in-progress',
+        'rejected',
+        'concept'
+      ]),
+      madeFor: z.string().optional(),
       featured: z.boolean().optional(),
       builtWith: z
         .array(

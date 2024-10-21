@@ -2,7 +2,8 @@
 title: Kotim Bercahaya
 description: A campaign website for 2020 Kotawaringin Timur mayoral election.
 dateCompleted: 2020-09-30
-madeAt: Rudini-Samsudin (Kotim Bercahaya) Campaign Team
+status: archived
+madeFor: Kotim Bercahaya Campaign Team
 featured: true
 builtWith:
   - name: Eleventy

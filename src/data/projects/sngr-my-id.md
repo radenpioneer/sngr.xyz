@@ -2,7 +2,7 @@
 title: sngr.my.id
 description: My very own personal blog.
 dateCompleted: 2024-08-21
-madeAt: Personal
+status: completed
 featured: false
 builtWith:
   - name: Astro

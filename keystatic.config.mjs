@@ -42,8 +42,19 @@ export default config({
         dateCompleted: fields.date({
           label: 'Date Completed'
         }),
-        madeAt: fields.text({
-          label: 'Made at'
+        status: fields.select({
+          label: 'Project Status',
+          options: [
+            { label: 'Completed', value: 'completed' },
+            { label: 'Archived', value: 'archived' },
+            { label: 'In-Progress', value: 'in-progress' },
+            { label: 'Rejected', value: 'rejected' },
+            { label: 'Concept', value: 'concept' }
+          ],
+          defaultValue: 'completed'
+        }),
+        madeFor: fields.text({
+          label: 'Made for'
         }),
         featured: fields.checkbox({
           label: 'Featured Project'

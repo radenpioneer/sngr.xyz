@@ -1,7 +1,7 @@
 ---
 title: TKIT Al-Ishlah
 description: Concept Website for TKIT Al-Ishlah Sampit.
-madeAt: Concept
+status: rejected
 featured: false
 builtWith:
   - name: Astro
