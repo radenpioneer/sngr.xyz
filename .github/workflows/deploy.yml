@@ -1,0 +1,48 @@
+name: Build, Test & Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build Site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
+        with:
+          bun-version-file: .bun-version
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Restore Build Cache
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
+        with:
+          path: './node_modules/.astro'
+          key: astro-cache-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**') }}
+          restore-keys: |
+            astro-cache-${{ hashFiles('package-lock.json') }}-
+            astro-cache-
+
+      - name: Build your site
+        run: bun run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@f84a562284fc78278ff9052435d9526f9c718361 # v3
+        with:
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          packageManager: bun
+          command: pages deploy dist --project-name=sngr-xyz
