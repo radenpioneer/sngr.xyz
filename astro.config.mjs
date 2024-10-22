@@ -19,6 +19,9 @@ export default defineConfig({
       enabled: true
     }
   }),
+  image: {
+    domains: 'astro.badg.es'
+  },
   vite: {
     plugins: [icons({ compiler: 'jsx', jsx: 'react' })]
   },
