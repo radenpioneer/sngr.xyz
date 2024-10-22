@@ -1,0 +1,21 @@
+---
+import PagesLayout, {
+  type Props as PagesLayoutProps
+} from '~/layouts/pages.astro'
+import ProjectsTable from '~/components/projects/table.astro'
+import { BackButton } from '~/components/common/button'
+
+const props = {
+  title: 'Projects',
+  subtitle: 'My past works.',
+  description: 'Archive page contains list of past projects.'
+} satisfies PagesLayoutProps
+---
+
+<PagesLayout {...props}>
+  <ProjectsTable />
+
+  <Fragment slot='navigation'>
+    <BackButton href='/#projects' aria-label='home' />
+  </Fragment>
+</PagesLayout>
