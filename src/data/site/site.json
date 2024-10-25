@@ -1,6 +1,7 @@
 {
   "title": "R. Ilham Sastronegoro",
-  "description": "Ilham's Portfolio Website. Pasts works and side projects.",
+  "description": "Central Borneo-based web builder.",
   "logo": "~/assets/site/logo.svg",
-  "favicon": "/favicon.svg"
+  "favicon": "/favicon.svg",
+  "repo": "https://github.com/radenpioneer/sngr.xyz"
 }

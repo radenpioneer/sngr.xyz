@@ -17,7 +17,7 @@ export const FeaturedProjects: FC<FeaturedProjectsProps> = ({ projects }) => {
         >
           <div className='font-mono text-xs'>Featured Project</div>
           <h3 className='mb-4 text-2xl font-extrabold sm:max-w-[240px] md:max-w-[360px]'>
-            <a className='hover:underline' href={`/projects/${project.id}`}>
+            <a className='hover:underline' href={`/#/projects/${project.id}`}>
               {project.data.title}
             </a>
           </h3>

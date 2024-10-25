@@ -164,6 +164,9 @@ export default config({
           validation: {
             isRequired: true
           }
+        }),
+        repo: fields.url({
+          label: "Site's Repository URL"
         })
       }
     }),

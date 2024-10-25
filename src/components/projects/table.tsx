@@ -35,11 +35,7 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
       cell: (cell) => (
         <a
           className='font-bold hover:underline'
-          href={
-            cell.row.original.data.page
-              ? `/projects/${cell.row.original.id}`
-              : '/projects'
-          }
+          href={`/projects/${cell.row.original.data.page ? '' : '#/'}${cell.row.original.id}`}
         >
           {cell.getValue()}
         </a>

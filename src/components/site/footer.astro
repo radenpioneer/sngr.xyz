@@ -1,7 +1,14 @@
 ---
-import Badge from '../common/badge.astro'
+import AstroBadge from '../common/astro-badge.astro'
+import RepoBadge from '../common/repo-badge.astro'
+import RSSBadge from '../common/rss-badge.astro'
 ---
 
-<footer class='flex w-full flex-row-reverse px-4 pb-4 pt-6'>
-  <Badge />
+<footer class='flex w-full flex-row-reverse items-center gap-3 px-4 pb-4 pt-6'>
+  <AstroBadge />
+  <RepoBadge />
+  <RSSBadge />
+  <div class='mr-auto text-sm font-bold text-zinc-500'>
+    &copy; {new Date().getFullYear()}
+  </div>
 </footer>
