@@ -20,7 +20,7 @@ export default defineConfig({
     }
   }),
   image: {
-    domains: 'astro.badg.es'
+    domains: ['astro.badg.es']
   },
   vite: {
     plugins: [icons({ compiler: 'jsx', jsx: 'react' })]
