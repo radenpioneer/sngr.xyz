@@ -1,0 +1,50 @@
+---
+import Section, { type Props as SectionProps } from './section.astro'
+import { FeaturedProjects } from './projects'
+import { getCollection } from 'astro:content'
+import { getImage } from 'astro:assets'
+import ArrowIcon from '~icons/material-symbols/arrow-forward-rounded'
+
+interface Props extends Omit<SectionProps, 'title'> {}
+
+const { class: className, ...props } = Astro.props
+
+const projectsData = await getCollection(
+  'projects',
+  (entry) => entry.data.featured
+)
+const projects = await Promise.all(
+  projectsData.map(async (project) => ({
+    ...project,
+    data: {
+      ...project.data,
+      image: project.data.image
+        ? await getImage({
+            src: project.data.image,
+            widths: [640],
+            sizes: '640px'
+          })
+        : undefined
+    }
+  }))
+)
+
+export type Projects = typeof projects
+
+const title = "Projects I've built" as const
+---
+
+<Section
+  title={title}
+  class:list={['mx-auto flex min-h-screen max-w-screen-md flex-col', className]}
+  {...props}
+>
+  <FeaturedProjects projects={projects} client:idle />
+
+  <Fragment slot='footer'>
+    <a class='align-middle font-bold' href='/projects'>
+      <span class='hover:underline'>All Projects</span>
+      <ArrowIcon className='inline' />
+    </a>
+  </Fragment>
+</Section>

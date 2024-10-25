@@ -1,0 +1,15 @@
+---
+import { getEntry } from 'astro:content'
+import { LinkButton } from './button'
+import GithubIcon from '~icons/simple-icons/github'
+
+const site = await getEntry('site', 'site')
+---
+
+<LinkButton
+  href={site.data.repo || '#'}
+  target='_blank'
+  aria-label='Site Repository'
+>
+  <GithubIcon className='text-lg' />
+</LinkButton>
