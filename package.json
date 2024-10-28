@@ -13,7 +13,7 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "11.1.0",
+    "@astrojs/cloudflare": "11.2.0",
     "@astrojs/react": "3.6.2",
     "@astrojs/tailwind": "5.1.2",
     "@fontsource-variable/martian-mono": "5.1.0",
