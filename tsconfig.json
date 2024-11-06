@@ -3,7 +3,9 @@
   "compilerOptions": {
     "types": [
       "@cloudflare/workers-types/2023-07-01",
-      "unplugin-icons/types/react"
+      "unplugin-icons/types/react",
+      "vite-plugin-pwa/client",
+      "vite-plugin-pwa/info"
     ],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
