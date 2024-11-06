@@ -10,6 +10,8 @@ export const GET: APIRoute = () => {
       short_name: site.data.title,
       description: site.data.description,
       theme_color: '#ffffff',
+      start_url: '/',
+      display: 'browser',
       icons: [
         {
           src: 'pwa-64x64.png',
