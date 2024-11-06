@@ -30,6 +30,7 @@ pnpm-debug.log*
 # icons generated
 public/*
 !public/favicon.svg
+!public/robots.txt
 
 # wireit
 .wireit

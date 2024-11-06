@@ -13,7 +13,11 @@ export default defineConfig({
     react(),
     tailwind(),
     pwa({
-      registerType: 'autoUpdate'
+      registerType: 'autoUpdate',
+      manifest: false,
+      workbox: {
+        maximumFileSizeToCacheInBytes: 3145728
+      }
     }),
     ...(process.env.KEYSTATIC ? [keystatic()] : [])
   ],
