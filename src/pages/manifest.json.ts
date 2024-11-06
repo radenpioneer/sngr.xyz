@@ -11,7 +11,7 @@ export const GET: APIRoute = () => {
       description: site.data.description,
       theme_color: '#ffffff',
       start_url: '/',
-      display: 'browser',
+      display: 'minimal-ui',
       icons: [
         {
           src: 'pwa-64x64.png',
