@@ -5,12 +5,13 @@
   "scripts": {
     "astro": "astro",
     "build": "wireit",
+    "clean": "wireit",
     "deploy": "wireit",
     "dev": "astro dev",
     "format": "wireit",
     "gen:cf-types": "wireit",
     "preview": "wireit",
-    "start": "conc npm:dev"
+    "start": "conc npm:preview"
   },
   "dependencies": {
     "@astrojs/cloudflare": "11.2.0",
@@ -37,13 +38,16 @@
     "@types/react": "18.3.12",
     "@types/react-dom": "18.3.1",
     "@vite-pwa/assets-generator": "^0.2.6",
+    "@vite-pwa/astro": "^0.4.3",
     "concurrently": "^9.0.1",
     "prettier": "3.3.3",
     "prettier-config-standard": "7.0.0",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "0.6.8",
+    "trash-cli": "^6.0.0",
     "typescript": "5.6.3",
     "unplugin-icons": "0.19.3",
+    "vite-plugin-pwa": "^0.20.5",
     "wireit": "^0.14.9",
     "wrangler": "3.83.0"
   },
@@ -86,6 +90,7 @@
     "preview": {
       "command": "wrangler pages dev",
       "dependencies": [
+        "clean",
         "build"
       ],
       "service": true
@@ -95,6 +100,9 @@
       "dependencies": [
         "build"
       ]
+    },
+    "clean": {
+      "command": "trash dist"
     }
   }
 }
