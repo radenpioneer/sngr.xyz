@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.4",
-    "@cloudflare/workers-types": "4.20241022.0",
+    "@cloudflare/workers-types": "4.20241106.0",
     "@iconify/json": "2.2.268",
     "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.1.0",
