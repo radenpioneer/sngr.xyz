@@ -26,3 +26,11 @@ pnpm-debug.log*
 # wrangler files
 .wrangler
 .dev.vars
+
+# icons generated
+public/*
+!public/favicon.svg
+!public/robots.txt
+
+# wireit
+.wireit

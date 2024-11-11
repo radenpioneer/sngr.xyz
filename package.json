@@ -4,16 +4,17 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "astro check && astro build",
-    "cf-typegen": "wrangler types",
-    "deploy": "astro build && wrangler pages deploy",
+    "build": "wireit",
+    "clean": "wireit",
+    "deploy": "wireit",
     "dev": "astro dev",
-    "format": "prettier --write .",
-    "preview": "astro build && wrangler pages dev",
-    "start": "astro dev"
+    "format": "wireit",
+    "gen:cf-types": "wireit",
+    "preview": "wireit",
+    "start": "conc npm:preview"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "11.1.0",
+    "@astrojs/cloudflare": "11.2.0",
     "@astrojs/react": "3.6.2",
     "@astrojs/tailwind": "5.1.2",
     "@fontsource-variable/martian-mono": "5.1.0",
@@ -21,7 +22,7 @@
     "@keystatic/astro": "5.0.3",
     "@keystatic/core": "0.5.39",
     "@tanstack/react-table": "8.20.5",
-    "astro": "4.16.7",
+    "astro": "4.16.10",
     "clsx": "2.1.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -29,19 +30,79 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.4",
-    "@cloudflare/workers-types": "4.20241022.0",
-    "@iconify/json": "2.2.263",
+    "@cloudflare/workers-types": "4.20241106.0",
+    "@iconify/json": "2.2.270",
     "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.1.0",
     "@tailwindcss/typography": "0.5.15",
     "@types/react": "18.3.12",
     "@types/react-dom": "18.3.1",
+    "@vite-pwa/assets-generator": "^0.2.6",
+    "@vite-pwa/astro": "^0.4.3",
+    "concurrently": "^9.1.0",
     "prettier": "3.3.3",
     "prettier-config-standard": "7.0.0",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "0.6.8",
+    "trash-cli": "^6.0.0",
     "typescript": "5.6.3",
-    "unplugin-icons": "0.19.3",
-    "wrangler": "3.83.0"
+    "unplugin-icons": "0.20.1",
+    "vite-plugin-pwa": "^0.20.5",
+    "wireit": "^0.14.9",
+    "wrangler": "3.86.0"
+  },
+  "wireit": {
+    "format": {
+      "command": "prettier --write ."
+    },
+    "gen:cf-types": {
+      "command": "wrangler types"
+    },
+    "check": {
+      "command": "conc \"prettier --check .\" \"astro check\""
+    },
+    "gen:icons": {
+      "command": "pwa-assets-generator --preset minimal-2023 public/favicon.svg",
+      "files": [
+        "public/favicon.svg"
+      ],
+      "output": [
+        "public/apple-touch-icon-*",
+        "public/maskable-icon-*",
+        "public/pwa-*",
+        "public/favicon.ico"
+      ]
+    },
+    "build": {
+      "command": "astro build",
+      "dependencies": [
+        "check",
+        "gen:icons"
+      ],
+      "files": [
+        "src/**",
+        "public/**"
+      ],
+      "output": [
+        "dist/**"
+      ]
+    },
+    "preview": {
+      "command": "wrangler pages dev",
+      "dependencies": [
+        "clean",
+        "build"
+      ],
+      "service": true
+    },
+    "deploy": {
+      "command": "wrangler pages deploy",
+      "dependencies": [
+        "build"
+      ]
+    },
+    "clean": {
+      "command": "trash dist"
+    }
   }
 }

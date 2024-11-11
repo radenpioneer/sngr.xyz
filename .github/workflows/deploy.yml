@@ -14,18 +14,21 @@ concurrency:
 jobs:
   build:
     name: Build Site
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          bun-version-file: .bun-version
+          node-version-file: .nvmrc
+
+      - name: Setup Wireit Cache
+        uses: google/wireit@setup-github-actions-caching/v2
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: npm ci
 
       - name: Restore Build Cache
         uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4
@@ -37,12 +40,11 @@ jobs:
             astro-cache-
 
       - name: Build your site
-        run: bun run build
+        run: npm run build
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@b2a0191ce60d21388e1a8dcc968b4e9966f938e1 # v3
+        uses: cloudflare/wrangler-action@05f17c4a695b4d94b57b59997562c6a4624c64e4 # v3
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          packageManager: bun
           command: pages deploy dist --project-name=sngr-xyz

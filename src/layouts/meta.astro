@@ -11,7 +11,15 @@ export interface Props {
 const { title, description } = Astro.props
 ---
 
+{/* obviously */}
 <title>{title ? `${title} | ${site.data.title}` : site.data.title}</title>
 <meta name='description' content={description || site.data.description} />
-<link rel='icon' type='image/svg+xml' href={site.data.favicon} />
 <link rel='canonical' href={Astro.url} />
+
+{/* icons */}
+<link rel='icon' href='/favicon.ico' sizes='48x48' />
+<link rel='icon' href='/favicon.svg' sizes='any' type='image/svg+xml' />
+<link rel='apple-touch-icon' href='/apple-touch-icon-180x180.png' />
+
+{/* manifest */}
+<link rel='manifest' href='/manifest.json' />

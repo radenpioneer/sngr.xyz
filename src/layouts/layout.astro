@@ -2,6 +2,7 @@
 import BaseLayout, { type Props as BaseLayoutProps } from './base.astro'
 import Meta, { type Props as MetaProps } from './meta.astro'
 import Footer from '~/components/site/footer.astro'
+import { ViewTransitions } from 'astro:transitions'
 import '@fontsource-variable/plus-jakarta-sans'
 import '@fontsource-variable/martian-mono'
 
@@ -16,6 +17,16 @@ const { title, description, ...props } = Astro.props
 
   <Fragment slot='head'>
     <Meta title={title} description={description} />
+    <ViewTransitions />
     <slot name='head' />
   </Fragment>
 </BaseLayout>
+
+<script>
+  import { registerSW } from 'virtual:pwa-register'
+
+  registerSW({
+    immediate: true,
+    onOfflineReady: () => console.log('Offline Ready!')
+  })
+</script>
