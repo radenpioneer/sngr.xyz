@@ -15,6 +15,7 @@ export default config({
         contentField: 'content'
       },
       entryLayout: 'content',
+      columns: ['title', 'dateCompleted'],
       schema: {
         title: fields.slug({
           name: {

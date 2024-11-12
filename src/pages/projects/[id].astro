@@ -5,7 +5,6 @@ import PagesLayout, {
 } from '~/layouts/pages.astro'
 import { Image } from 'astro:assets'
 import { getCollection, render } from 'astro:content'
-import { BackButton } from '~/components/common/button'
 
 export const getStaticPaths = (async () => {
   const projects = await getCollection('projects', (entry) => entry.data.page)
@@ -28,26 +27,22 @@ const props = {
 ---
 
 <PagesLayout {...props}>
-  <article class='prose'>
+  <article class='prose mx-auto max-w-none'>
     <Content />
   </article>
 
-  <Fragment slot='header'>
+  <Fragment slot='header-2'>
     {
       project.data.image && (
         <Image
-          class='mt-4 w-[384px] max-w-full sm:hidden'
+          class='mb-4 w-full sm:mb-0 sm:mr-8 sm:w-[288px]'
           src={project.data.image}
-          widths={[768]}
-          sizes='768px'
+          widths={[576]}
+          sizes='576px'
           loading='eager'
           alt=''
         />
       )
     }
-  </Fragment>
-
-  <Fragment slot='navigation'>
-    <BackButton href='/projects' aria-label='projects' />
   </Fragment>
 </PagesLayout>

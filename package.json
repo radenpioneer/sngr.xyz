@@ -7,7 +7,7 @@
     "build": "wireit",
     "clean": "wireit",
     "deploy": "wireit",
-    "dev": "astro dev",
+    "dev": "wireit",
     "format": "wireit",
     "gen:cf-types": "wireit",
     "preview": "wireit",
@@ -86,6 +86,10 @@
       "output": [
         "dist/**"
       ]
+    },
+    "dev": {
+      "command": "astro dev",
+      "service": true
     },
     "preview": {
       "command": "wrangler pages dev",

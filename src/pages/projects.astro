@@ -3,7 +3,6 @@ import PagesLayout, {
   type Props as PagesLayoutProps
 } from '~/layouts/pages.astro'
 import ProjectsTable from '~/components/projects/table.astro'
-import { BackButton } from '~/components/common/button'
 
 const props = {
   title: 'Projects',
@@ -14,8 +13,4 @@ const props = {
 
 <PagesLayout {...props}>
   <ProjectsTable />
-
-  <Fragment slot='navigation'>
-    <BackButton href='/#projects' aria-label='home' />
-  </Fragment>
 </PagesLayout>

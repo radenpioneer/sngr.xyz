@@ -1,29 +1,35 @@
 ---
 import Layout, { type Props as LayoutProps } from '~/layouts/layout.astro'
 import Main from './main.astro'
+import { BackButton } from '~/components/common/button'
 
 export interface Props extends LayoutProps {
   subtitle?: string | undefined
 }
 
-const { title, subtitle, ...props } = Astro.props
+const { title, subtitle, class: className, ...props } = Astro.props
 ---
 
-<Layout title={title} {...props}>
+<Layout title={title} class:list={['pt-4 sm:pt-16', className]} {...props}>
   <header
-    class='mx-auto flex max-w-screen-xl flex-col gap-1 px-4 pb-4 pt-16 sm:mb-12 sm:gap-2'
+    class='mx-auto mb-12 flex max-w-screen-xl flex-col-reverse px-4 sm:flex-row sm:items-center'
   >
+    <div class='flex flex-1 flex-col'>
+      <div class='mb-2 flex gap-1'>
+        <BackButton href='/' />
+      </div>
+      <h1 class='text-2xl font-extrabold md:text-4xl'>{title}</h1>
+      <slot name='header' />
+    </div>
     {
-      Astro.slots.has('navigation') && Astro.url.pathname !== '/' && (
-        <div class='flex'>
-          <slot name='navigation' />
+      Astro.slots.has('header-2') && (
+        <div class='relative'>
+          <slot name='header-2' />
         </div>
       )
     }
-    <h1 class='text-2xl font-extrabold md:text-4xl'>{title}</h1>
-    {subtitle && <p class='font-mono text-zinc-700'>{subtitle}</p>}
-    <slot name='header' />
   </header>
+
   <Main class='mx-auto max-w-screen-xl px-4'>
     <slot />
   </Main>
