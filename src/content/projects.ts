@@ -36,6 +36,7 @@ export const projects = defineCollection({
           })
         )
         .optional(),
+      logo: image().optional(),
       image: image().optional()
     })
 })

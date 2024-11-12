@@ -89,6 +89,9 @@
     },
     "dev": {
       "command": "astro dev",
+      "dependencies": [
+        "gen:icons"
+      ],
       "service": true
     },
     "preview": {

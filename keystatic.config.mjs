@@ -106,6 +106,11 @@ export default config({
             itemLabel: (props) => props.fields.title.value
           }
         ),
+        logo: fields.image({
+          label: 'Project Logo',
+          directory: 'src/assets/projects',
+          publicPath: '~/assets/projects'
+        }),
         image: fields.image({
           label: 'Project Image',
           directory: 'src/assets/projects',

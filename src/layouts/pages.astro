@@ -10,24 +10,16 @@ export interface Props extends LayoutProps {
 const { title, subtitle, class: className, ...props } = Astro.props
 ---
 
-<Layout title={title} class:list={['pt-4 sm:pt-16', className]} {...props}>
-  <header
-    class='mx-auto mb-12 flex max-w-screen-xl flex-col-reverse px-4 sm:flex-row sm:items-center'
-  >
-    <div class='flex flex-1 flex-col'>
+<Layout title={title} class:list={['pt-4', className]} {...props}>
+  <header class='mx-auto mb-8 flex max-w-screen-xl flex-col px-4'>
+    <div class='flex flex-col'>
       <div class='mb-2 flex gap-1'>
-        <BackButton href='/' />
+        <BackButton href='/' aria-label='Home' />
       </div>
-      <h1 class='text-2xl font-extrabold md:text-4xl'>{title}</h1>
-      <slot name='header' />
+      <slot name='header'>
+        <h1 class='text-2xl font-extrabold md:text-4xl'>{title}</h1>
+      </slot>
     </div>
-    {
-      Astro.slots.has('header-2') && (
-        <div class='relative'>
-          <slot name='header-2' />
-        </div>
-      )
-    }
   </header>
 
   <Main class='mx-auto max-w-screen-xl px-4'>

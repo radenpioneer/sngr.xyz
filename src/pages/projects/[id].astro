@@ -31,17 +31,19 @@ const props = {
     <Content />
   </article>
 
-  <Fragment slot='header-2'>
+  <Fragment slot='header'>
     {
-      project.data.image && (
-        <Image
-          class='mb-4 w-full sm:mb-0 sm:mr-8 sm:w-[288px]'
-          src={project.data.image}
-          widths={[576]}
-          sizes='576px'
-          loading='eager'
-          alt=''
-        />
+      project.data.logo && (
+        <h1 class=''>
+          <Image
+            class='mx-auto w-[144px]'
+            src={project.data.logo}
+            widths={[288]}
+            sizes='288px'
+            loading='eager'
+            alt={project.data.title}
+          />
+        </h1>
       )
     }
   </Fragment>

@@ -6,6 +6,6 @@ interface Props extends HTMLAttributes<'main'> {}
 const { class: className, ...props } = Astro.props
 ---
 
-<main class:list={['min-h-screen pb-12', className]} {...props}>
+<main class:list={['min-h-screen', className]} {...props}>
   <slot />
 </main>
