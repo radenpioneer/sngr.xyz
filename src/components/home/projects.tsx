@@ -23,7 +23,7 @@ export const FeaturedProjects: FC<FeaturedProjectsProps> = ({ projects }) => {
                 {project.data.title}
               </a>
             </h3>
-            <div className='flex-1 text-sm mb-4 min-h-[60px]'>
+            <div className='mb-4 min-h-[60px] flex-1 text-sm'>
               <p>{project.data.description}</p>
             </div>
 
