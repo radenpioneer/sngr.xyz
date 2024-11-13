@@ -33,12 +33,19 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
     columnHelper.accessor('data.title', {
       header: 'Project',
       cell: (cell) => (
-        <a
-          className='font-bold hover:underline'
-          href={`/projects/${cell.row.original.data.page ? '' : '#/'}${cell.row.original.id}`}
-        >
-          {cell.getValue()}
-        </a>
+        <>
+          {cell.row.original.data.page ? (
+            <a
+              className='font-bold hover:underline'
+              href={`/projects/${cell.row.original.id}`}
+            >
+              {cell.getValue()}
+              <PublicURLIcon className='ml-[0.125rem] inline text-xl md:text-sm' />
+            </a>
+          ) : (
+            <span className='font-bold'>{cell.getValue()}</span>
+          )}
+        </>
       ),
       sortingFn: 'text'
     }),
@@ -98,7 +105,7 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
                       <span className='font-mono hover:underline md:text-sm'>
                         {entry.title}
                       </span>
-                      <PublicURLIcon className='inline text-xl md:text-sm' />
+                      <PublicURLIcon className='ml-[0.125rem] inline text-xl md:text-sm' />
                     </Fragment>
                   )}
                 </a>
