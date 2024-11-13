@@ -5,9 +5,13 @@ import PagesLayout, {
 } from '~/layouts/pages.astro'
 import { getImage, Image } from 'astro:assets'
 import { getCollection, render } from 'astro:content'
+import { HomeButton, BackButton } from '~/components/common/button'
 
 export const getStaticPaths = (async () => {
-  const projects = await getCollection('projects', (entry) => entry.data.page)
+  const projects = await getCollection(
+    'projects',
+    (entry) => !entry.data.draft && entry.data.page
+  )
   return projects.map((project) => ({
     params: {
       id: project.id
@@ -31,7 +35,9 @@ const image = project.data.image
 ---
 
 <PagesLayout {...props}>
-  <article class='prose mx-auto sm:prose-lg lg:prose-xl'>
+  <article
+    class='prose prose-zinc mx-auto mb-12 sm:prose-lg lg:prose-xl prose-img:my-2 sm:prose-img:my-4 sm:prose-img:px-8'
+  >
     <Content />
   </article>
 
@@ -41,8 +47,8 @@ const image = project.data.image
         <hgroup
           id='hgroup'
           class:list={[
-            'relative -mx-4 flex aspect-[16/10] flex-col items-center justify-center gap-4 border-t-2 border-zinc-400 px-4 py-8 sm:mx-0 sm:aspect-[16/6] sm:flex-row sm:rounded-xl sm:border sm:border-zinc-200 sm:shadow-md',
-            'before:absolute before:inset-0 before:z-[-1] before:block before:h-full before:w-full before:bg-cover before:opacity-30 before:bg-blend-saturation before:[background-image:--background-image] sm:before:rounded-xl'
+            'relative -mx-4 flex aspect-[16/10] flex-col items-center justify-center gap-4 border-b-2 border-t-2 border-zinc-700 px-4 py-8 sm:mx-0 sm:aspect-[16/6] sm:flex-row sm:border-4 sm:shadow-md',
+            'before:absolute before:inset-0 before:z-[-1] before:block before:h-full before:w-full before:bg-cover before:opacity-30 before:bg-blend-saturation before:[background-image:--background-image]'
           ]}
         >
           <Image
@@ -67,6 +73,11 @@ const image = project.data.image
         </hgroup>
       )
     }
+  </Fragment>
+
+  <Fragment slot='nav'>
+    <BackButton href='/projects' aria-label='All Projects' />
+    <HomeButton href='/#projects' aria-label='Home' />
   </Fragment>
 </PagesLayout>
 

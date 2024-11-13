@@ -1,19 +1,21 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 
-export interface Props extends Omit<HTMLAttributes<'body'>, 'title'> {}
+export interface Props extends Omit<HTMLAttributes<'body'>, 'title'> {
+  htmlRootProps?: Omit<HTMLAttributes<'html'>, 'lang' | 'title'>
+}
 
-const { class: className, ...props } = Astro.props
+const { class: className, htmlRootProps = {}, ...props } = Astro.props
+const { class: htmlClassName, ...htmlProps } = htmlRootProps
 ---
 
-<html lang='en' transition:animate='none'>
+<html lang='en' class={htmlClassName} transition:animate='none' {...htmlProps}>
   <head>
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width' />
-    <meta name='generator' content={Astro.generator} />
     <slot name='head' />
   </head>
-  <body class:list={[className]} {...props}>
+  <body class={className} {...props}>
     <slot />
   </body>
 </html>

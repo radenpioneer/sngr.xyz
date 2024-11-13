@@ -8,7 +8,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['"Plus Jakarta Sans Variable"', ...defaultTheme.fontFamily.sans],
-        mono: ['"Martian Mono Variable"', ...defaultTheme.fontFamily.mono]
+        mono: ['"JetBrains Mono Variable"', ...defaultTheme.fontFamily.mono]
       }
     }
   },

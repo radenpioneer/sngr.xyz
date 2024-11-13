@@ -64,6 +64,10 @@ export default config({
           label: 'Project Page',
           defaultValue: false
         }),
+        draft: fields.checkbox({
+          label: 'Draft',
+          defaultValue: true
+        }),
         builtWith: fields.array(
           fields.slug({
             name: {

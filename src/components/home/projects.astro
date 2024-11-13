@@ -11,7 +11,7 @@ const { class: className, ...props } = Astro.props
 
 const projectsData = await getCollection(
   'projects',
-  (entry) => entry.data.featured
+  (entry) => !entry.data.draft && entry.data.featured
 )
 const projects = await Promise.all(
   projectsData.map(async (project) => ({
