@@ -25,7 +25,8 @@ export default defineConfig({
   adapter: cloudflare({
     platformProxy: {
       enabled: true
-    }
+    },
+    imageService: 'compile'
   }),
   image: {
     domains: ['astro.badg.es']
