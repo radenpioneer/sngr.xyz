@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { ProjectsPageHeader, ProjectsPageTitleBox } from './page'
+import { Image, getImage } from 'astro:assets'
+
+interface Props {
+  project: CollectionEntry<'projects'>
+}
+
+const { project } = Astro.props
+
+const image = project.data.image
+  ? await getImage({ src: project.data.image, widths: [380] })
+  : undefined
+---
+
+<ProjectsPageHeader id='hgroup'>
+  <Fragment>
+    {
+      project.data.logo && (
+        <Image
+          class='w-[108px] sm:w-[288px]'
+          src={project.data.logo}
+          widths={[216, 576]}
+          sizes='(min-width: 640px) 576w, 216w'
+          loading='eager'
+          alt=''
+        />
+      )
+    }
+  </Fragment>
+  <ProjectsPageTitleBox project={project} />
+</ProjectsPageHeader>
+
+<style define:vars={{ 'image-url': image ? `url(${image.src})` : '' }}>
+  #hgroup {
+    --background-image: linear-gradient(
+        theme('colors.zinc.400'),
+        theme('colors.zinc.400')
+      ),
+      var(--image-url);
+  }
+</style>

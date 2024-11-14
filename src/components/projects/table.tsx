@@ -8,11 +8,11 @@ import {
   getSortedRowModel,
   useReactTable
 } from '@tanstack/react-table'
+import { ProjectsLinksList } from './parts'
 import clsx from 'clsx/lite'
 import PublicURLIcon from '~icons/material-symbols/arrow-outward-rounded'
-import GithubIcon from '~icons/simple-icons/github'
 
-type TableData = CollectionEntry<'projects'>
+export type TableData = CollectionEntry<'projects'>
 interface ProjectsTableProps {
   data: Array<TableData>
 }
@@ -86,37 +86,7 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ data }) => {
     }),
     columnHelper.accessor('data.links', {
       header: 'Link',
-      cell: (cell) => (
-        <ul className='flex w-full items-center gap-1'>
-          {cell.getValue()?.map((entry, i, arr) => (
-            <Fragment key={i}>
-              <li>
-                <a
-                  className='whitespace-nowrap'
-                  href={entry.url}
-                  title={entry.title}
-                  aria-label={entry.title}
-                  target='_blank'
-                >
-                  {entry.type === 'repository' ? (
-                    <GithubIcon className='text-xl md:text-sm' />
-                  ) : (
-                    <Fragment>
-                      <span className='font-mono hover:underline md:text-sm'>
-                        {entry.title}
-                      </span>
-                      <PublicURLIcon className='ml-[0.125rem] inline text-xl md:text-sm' />
-                    </Fragment>
-                  )}
-                </a>
-              </li>
-              {i < arr.length - 1 ? (
-                <span className='text-xs'>&bull;</span>
-              ) : null}
-            </Fragment>
-          ))}
-        </ul>
-      ),
+      cell: (cell) => <ProjectsLinksList links={cell.getValue()} />,
       enableSorting: false
     })
   ]

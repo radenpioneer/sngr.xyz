@@ -3,7 +3,7 @@ import type { GetStaticPaths } from 'astro'
 import PagesLayout, {
   type Props as PagesLayoutProps
 } from '~/layouts/pages.astro'
-import { getImage, Image } from 'astro:assets'
+import PageHeader from '~/components/projects/page.astro'
 import { getCollection, render } from 'astro:content'
 import { HomeButton, BackButton } from '~/components/common/button'
 
@@ -29,9 +29,9 @@ const props = {
   description: project.data.description
 } satisfies PagesLayoutProps
 
-const image = project.data.image
-  ? await getImage({ src: project.data.image, widths: [380] })
-  : undefined
+// const image = project.data.image
+//   ? await getImage({ src: project.data.image, widths: [380] })
+//   : undefined
 ---
 
 <PagesLayout {...props}>
@@ -42,37 +42,7 @@ const image = project.data.image
   </article>
 
   <Fragment slot='header'>
-    {
-      project.data.logo && (
-        <hgroup
-          id='hgroup'
-          class:list={[
-            'relative -mx-4 flex aspect-[16/10] flex-col items-center justify-center gap-4 border-b-2 border-t-2 border-zinc-700 px-4 py-8 sm:mx-0 sm:aspect-[16/6] sm:flex-row sm:border-4 sm:shadow-md',
-            'before:absolute before:inset-0 before:z-[-1] before:block before:h-full before:w-full before:bg-cover before:opacity-30 before:bg-blend-saturation before:[background-image:--background-image]'
-          ]}
-        >
-          <Image
-            class='w-[144px] sm:w-[288px]'
-            src={project.data.logo}
-            widths={[288, 576]}
-            sizes='(min-width: 640px) 576w, 288w'
-            loading='eager'
-            alt=''
-          />
-          <div class='flex flex-col items-center justify-start gap-[0.125rem] sm:items-start sm:gap-1'>
-            <h1 class='text-xl font-black sm:text-4xl'>{project.data.title}</h1>
-            <p class='font-bold sm:text-lg'>
-              {project.data.status.toUpperCase()}
-            </p>
-            {project.data.dateCompleted && (
-              <p class='text-sm italic sm:text-base'>
-                Finished at {project.data.dateCompleted.toLocaleDateString()}
-              </p>
-            )}
-          </div>
-        </hgroup>
-      )
-    }
+    <PageHeader project={project} />
   </Fragment>
 
   <Fragment slot='nav'>
@@ -80,13 +50,3 @@ const image = project.data.image
     <HomeButton href='/#projects' aria-label='Home' />
   </Fragment>
 </PagesLayout>
-
-<style define:vars={{ 'image-url': image ? `url(${image.src})` : '' }}>
-  #hgroup {
-    --background-image: linear-gradient(
-        theme('colors.zinc.400'),
-        theme('colors.zinc.400')
-      ),
-      var(--image-url);
-  }
-</style>
