@@ -21,7 +21,6 @@ export default defineConfig({
     }),
     ...(process.env.KEYSTATIC ? [keystatic()] : [])
   ],
-  output: 'hybrid',
   adapter: cloudflare({
     platformProxy: {
       enabled: true
@@ -33,9 +32,5 @@ export default defineConfig({
   },
   vite: {
     plugins: [icons({ compiler: 'jsx', jsx: 'react' })]
-  },
-  experimental: {
-    contentLayer: true,
-    serverIslands: true
   }
 })
