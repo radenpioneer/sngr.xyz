@@ -7,7 +7,7 @@ const site = await getEntry('site', 'site')
 ---
 
 <LinkButton
-  href={site.data.repo || '#'}
+  href={site?.data.repo || '#'}
   target='_blank'
   aria-label='Site Repository'
 >

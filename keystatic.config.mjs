@@ -15,6 +15,7 @@ export default config({
         contentField: 'content'
       },
       entryLayout: 'content',
+      columns: ['title', 'dateCompleted'],
       schema: {
         title: fields.slug({
           name: {
@@ -63,6 +64,10 @@ export default config({
           label: 'Project Page',
           defaultValue: false
         }),
+        draft: fields.checkbox({
+          label: 'Draft',
+          defaultValue: true
+        }),
         builtWith: fields.array(
           fields.slug({
             name: {
@@ -105,6 +110,11 @@ export default config({
             itemLabel: (props) => props.fields.title.value
           }
         ),
+        logo: fields.image({
+          label: 'Project Logo',
+          directory: 'src/assets/projects',
+          publicPath: '~/assets/projects'
+        }),
         image: fields.image({
           label: 'Project Image',
           directory: 'src/assets/projects',

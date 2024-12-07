@@ -2,22 +2,28 @@
 import BaseLayout, { type Props as BaseLayoutProps } from './base.astro'
 import Meta, { type Props as MetaProps } from './meta.astro'
 import Footer from '~/components/site/footer.astro'
-import { ViewTransitions } from 'astro:transitions'
-import '@fontsource-variable/plus-jakarta-sans'
-import '@fontsource-variable/martian-mono'
+import { ClientRouter } from 'astro:transitions'
+import '@fontsource-variable/red-hat-text'
+import '@fontsource-variable/jetbrains-mono'
 
 export interface Props extends BaseLayoutProps, MetaProps {}
 
-const { title, description, ...props } = Astro.props
+const { title, description, class: className, ...props } = Astro.props
 ---
 
-<BaseLayout class='bg-zinc-50 text-zinc-950' {...props}>
+<BaseLayout
+  class:list={[
+    'flex min-h-screen flex-col bg-zinc-50 text-zinc-950 *:w-full',
+    className
+  ]}
+  {...props}
+>
   <slot />
   <Footer />
 
   <Fragment slot='head'>
     <Meta title={title} description={description} />
-    <ViewTransitions />
+    <ClientRouter />
     <slot name='head' />
   </Fragment>
 </BaseLayout>

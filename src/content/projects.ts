@@ -19,6 +19,7 @@ export const projects = defineCollection({
       madeFor: z.string().optional(),
       featured: z.boolean().optional(),
       page: z.boolean().optional(),
+      draft: z.boolean().optional(),
       builtWith: z
         .array(
           z.object({
@@ -36,6 +37,7 @@ export const projects = defineCollection({
           })
         )
         .optional(),
+      logo: image().optional(),
       image: image().optional()
     })
 })

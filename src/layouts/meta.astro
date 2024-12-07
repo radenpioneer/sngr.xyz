@@ -12,9 +12,10 @@ const { title, description } = Astro.props
 ---
 
 {/* obviously */}
-<title>{title ? `${title} | ${site.data.title}` : site.data.title}</title>
-<meta name='description' content={description || site.data.description} />
+<title>{title ? `${title} | ${site!.data.title}` : site!.data.title}</title>
+<meta name='description' content={description || site!.data.description} />
 <link rel='canonical' href={Astro.url} />
+<meta name='generator' content={Astro.generator} />
 
 {/* icons */}
 <link rel='icon' href='/favicon.ico' sizes='48x48' />

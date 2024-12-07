@@ -19,32 +19,29 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version-file: .nvmrc
-
-      - name: Setup Wireit Cache
-        uses: google/wireit@setup-github-actions-caching/v2
+          bun-version-file: .bun-version
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Restore Build Cache
         uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4
         with:
           path: './node_modules/.astro'
-          key: astro-cache-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**') }}
+          key: astro-cache-${{ hashFiles('bun.lockb') }}-${{ hashFiles('src/**') }}
           restore-keys: |
-            astro-cache-${{ hashFiles('package-lock.json') }}-
+            astro-cache-${{ hashFiles('bun.lockb') }}-
             astro-cache-
 
       - name: Build your site
-        run: npm run build
+        run: bun run build
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@05f17c4a695b4d94b57b59997562c6a4624c64e4 # v3
         with:
+          packageManager: bun
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: pages deploy dist --project-name=sngr-xyz

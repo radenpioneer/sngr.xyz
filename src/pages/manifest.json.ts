@@ -6,9 +6,9 @@ const site = await getEntry('site', 'site')
 export const GET: APIRoute = () => {
   return new Response(
     JSON.stringify({
-      name: site.data.title,
-      short_name: site.data.title,
-      description: site.data.description,
+      name: site!.data.title,
+      short_name: site!.data.title,
+      description: site!.data.description,
       theme_color: '#ffffff',
       start_url: '/',
       display: 'minimal-ui',

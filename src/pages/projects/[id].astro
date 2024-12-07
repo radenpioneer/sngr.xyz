@@ -3,12 +3,15 @@ import type { GetStaticPaths } from 'astro'
 import PagesLayout, {
   type Props as PagesLayoutProps
 } from '~/layouts/pages.astro'
-import { Image } from 'astro:assets'
+import PageHeader from '~/components/projects/page.astro'
 import { getCollection, render } from 'astro:content'
-import { BackButton } from '~/components/common/button'
+import { HomeButton, BackButton } from '~/components/common/button'
 
 export const getStaticPaths = (async () => {
-  const projects = await getCollection('projects', (entry) => entry.data.page)
+  const projects = await getCollection(
+    'projects',
+    (entry) => !entry.data.draft && entry.data.page
+  )
   return projects.map((project) => ({
     params: {
       id: project.id
@@ -25,29 +28,25 @@ const props = {
   title: project.data.title,
   description: project.data.description
 } satisfies PagesLayoutProps
+
+// const image = project.data.image
+//   ? await getImage({ src: project.data.image, widths: [380] })
+//   : undefined
 ---
 
 <PagesLayout {...props}>
-  <article class='prose'>
+  <article
+    class='prose prose-zinc mx-auto mb-12 sm:prose-lg lg:prose-xl prose-img:my-2 sm:prose-img:my-4 sm:prose-img:px-8'
+  >
     <Content />
   </article>
 
   <Fragment slot='header'>
-    {
-      project.data.image && (
-        <Image
-          class='mt-4 w-[384px] max-w-full sm:hidden'
-          src={project.data.image}
-          widths={[768]}
-          sizes='768px'
-          loading='eager'
-          alt=''
-        />
-      )
-    }
+    <PageHeader project={project} />
   </Fragment>
 
-  <Fragment slot='navigation'>
-    <BackButton href='/projects' aria-label='projects' />
+  <Fragment slot='nav'>
+    <BackButton href='/projects' aria-label='All Projects' />
+    <HomeButton href='/#projects' aria-label='Home' />
   </Fragment>
 </PagesLayout>

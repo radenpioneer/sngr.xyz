@@ -4,7 +4,8 @@ description: Official Website of Surau Madani, Lamandau.
 dateCompleted: 2022-03-01
 status: completed
 madeFor: Yayasan Madani Syafa'atul Qur'an
-featured: true
+featured: false
+page: false
 builtWith:
   - name: Astro
     slug: astro
@@ -16,4 +17,3 @@ links:
     type: public-url
 image: ~/assets/projects/surau-madani/image.png
 ---
-Official Website of Surau Madani, Lamandau.

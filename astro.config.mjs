@@ -21,20 +21,16 @@ export default defineConfig({
     }),
     ...(process.env.KEYSTATIC ? [keystatic()] : [])
   ],
-  output: 'hybrid',
   adapter: cloudflare({
     platformProxy: {
       enabled: true
-    }
+    },
+    imageService: 'compile'
   }),
   image: {
     domains: ['astro.badg.es']
   },
   vite: {
     plugins: [icons({ compiler: 'jsx', jsx: 'react' })]
-  },
-  experimental: {
-    contentLayer: true,
-    serverIslands: true
   }
 })

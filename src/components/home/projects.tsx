@@ -14,19 +14,20 @@ export const FeaturedProjects: FC<FeaturedProjectsProps> = ({ projects }) => {
         .sort(() => Math.random() - 0.5)
         .map((project) => (
           <div
-            className='relative flex aspect-[2360/1640] flex-col border-2 border-zinc-700 bg-zinc-100/90 p-4 shadow hover:bg-zinc-200 sm:aspect-auto sm:bg-zinc-100'
+            className='relative flex aspect-[2360/1640] flex-col border-2 border-zinc-700 bg-zinc-100/90 px-2 py-3 shadow hover:bg-zinc-200 sm:aspect-auto sm:bg-zinc-100 sm:*:max-w-[240px] md:*:max-w-[360px]'
             key={project.id}
           >
             <div className='font-mono text-xs'>Featured Project</div>
-            <h3 className='mb-4 text-2xl font-extrabold sm:max-w-[240px] md:max-w-[360px]'>
-              <a className='hover:underline' href={`/#/projects/${project.id}`}>
+            <h3 className='mb-2 text-xl font-extrabold'>
+              <a className='hover:underline' href={`/projects/${project.id}`}>
                 {project.data.title}
               </a>
             </h3>
-            <p className='text-sm sm:max-w-[240px] md:max-w-[360px]'>
-              {project.data.description}
-            </p>
-            <div className='mt-auto sm:mt-4'>
+            <div className='mb-4 min-h-[60px] flex-1 text-sm'>
+              <p>{project.data.description}</p>
+            </div>
+
+            <div className='mt-auto flex flex-col gap-[0.125rem]'>
               {project.data.builtWith && (
                 <div className='flex flex-wrap gap-2 font-mono text-xs'>
                   {project.data.builtWith.map((entry, i, arr) => (
@@ -40,7 +41,7 @@ export const FeaturedProjects: FC<FeaturedProjectsProps> = ({ projects }) => {
                 </div>
               )}
               {project.data.links && (
-                <div className='mt-2 flex items-center gap-2 sm:gap-1'>
+                <div className='flex items-center gap-2 sm:gap-1'>
                   {project.data.links.map((entry, i, arr) => (
                     <Fragment key={i}>
                       <a

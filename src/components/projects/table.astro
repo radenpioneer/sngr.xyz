@@ -2,7 +2,7 @@
 import { ProjectsTable } from './table'
 import { getCollection } from 'astro:content'
 
-const data = await getCollection('projects')
+const data = await getCollection('projects', (entry) => !entry.data.draft)
 ---
 
 <section class='w-full overflow-x-auto border-2 border-zinc-700'>

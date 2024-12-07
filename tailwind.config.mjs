@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Plus Jakarta Sans Variable"', ...defaultTheme.fontFamily.sans],
-        mono: ['"Martian Mono Variable"', ...defaultTheme.fontFamily.mono]
+        sans: ['"Red Hat Text Variable"', ...defaultTheme.fontFamily.sans],
+        mono: ['"JetBrains Mono Variable"', ...defaultTheme.fontFamily.mono]
       }
     }
   },
