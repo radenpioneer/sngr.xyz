@@ -1,9 +1,11 @@
+image: gitpod/workspace-bun
+
 tasks:
   - name: Prepare & Start Dev Server
     env:
       KEYSTATIC: true
-    init: npm install # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
-    command: npm run dev
+    init: bun install --frozen-lockfile # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
+    command: bun run dev
 
 # List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
 ports:
