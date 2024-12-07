@@ -2,7 +2,7 @@
 import BaseLayout, { type Props as BaseLayoutProps } from './base.astro'
 import Meta, { type Props as MetaProps } from './meta.astro'
 import Footer from '~/components/site/footer.astro'
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 import '@fontsource-variable/red-hat-text'
 import '@fontsource-variable/jetbrains-mono'
 
@@ -23,7 +23,7 @@ const { title, description, class: className, ...props } = Astro.props
 
   <Fragment slot='head'>
     <Meta title={title} description={description} />
-    <ViewTransitions />
+    <ClientRouter />
     <slot name='head' />
   </Fragment>
 </BaseLayout>

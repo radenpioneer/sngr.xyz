@@ -8,7 +8,7 @@ interface Props extends SectionProps {}
 const { class: className, ...props } = Astro.props
 const site = await getEntry('site', 'site')
 const bio = await getEntry('bio', 'bio')
-const { Content: BioContent } = await render(bio)
+const { Content: BioContent } = await render(bio!)
 ---
 
 <Section
@@ -23,7 +23,7 @@ const { Content: BioContent } = await render(bio)
   >
     <Image
       class='mb-2 w-[64px] rounded-full border-2 border-zinc-700 md:w-[128px]'
-      src={bio.data.image}
+      src={bio!.data.image}
       widths={[128, 256]}
       loading='eager'
       alt=''
@@ -31,9 +31,9 @@ const { Content: BioContent } = await render(bio)
     <h1
       class='break-words text-center text-2xl font-black leading-snug sm:text-4xl md:text-5xl'
     >
-      {site.data.title}
+      {site!.data.title}
     </h1>
-    <p class='px-4 text-center sm:px-0 sm:text-xl'>{site.data.description}</p>
+    <p class='px-4 text-center sm:px-0 sm:text-xl'>{site!.data.description}</p>
   </div>
   <div class='flex flex-col justify-start md:justify-center'>
     <article class='prose prose-zinc font-mono sm:prose-sm'>
