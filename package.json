@@ -43,7 +43,7 @@
     "prettier": "3.3.3",
     "prettier-config-standard": "7.0.0",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-tailwindcss": "0.6.8",
+    "prettier-plugin-tailwindcss": "0.6.11",
     "trash-cli": "^6.0.0",
     "typescript": "5.6.3",
     "unplugin-icons": "0.20.1",
