@@ -20,7 +20,7 @@
     "@fontsource-variable/martian-mono": "5.1.0",
     "@fontsource-variable/plus-jakarta-sans": "5.1.0",
     "@keystatic/astro": "5.0.6",
-    "@keystatic/core": "0.5.39",
+    "@keystatic/core": "0.5.46",
     "@tanstack/react-table": "8.21.2",
     "astro": "4.16.18",
     "clsx": "2.1.1",
