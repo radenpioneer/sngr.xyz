@@ -46,7 +46,7 @@
     "prettier-plugin-tailwindcss": "0.6.8",
     "trash-cli": "^6.0.0",
     "typescript": "5.8.2",
-    "unplugin-icons": "0.20.1",
+    "unplugin-icons": "0.22.0",
     "vite-plugin-pwa": "^0.20.5",
     "wireit": "^0.14.9",
     "wrangler": "3.114.1"
